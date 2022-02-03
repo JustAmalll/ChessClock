@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import dev.amal.chessclock.databinding.FragmentClockListBinding
 
 class ClockListFragment : Fragment() {
@@ -17,6 +18,16 @@ class ClockListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentClockListBinding.inflate(inflater, container, false)
+
+        // UI ACTIONS
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        binding.addClock.setOnClickListener{
+            val action = ClockListFragmentDirections.actionClockListFragmentToTimeControlFragment()
+            findNavController().navigate(action)
+        }
 
         return binding.root
     }
