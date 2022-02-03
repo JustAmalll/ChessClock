@@ -21,4 +21,15 @@
     <string name="back_icon_description">Back</string>
     <string name="clock_list_appbar_title">Clock List</string>
     <string name="add_clock_description">Add clock</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="set_time_button">OK</string>
+    <string name="timer_picker_title">Select time</string>
+    <string name="hours">Hours</string>
+    <string name="hour_picker_description">Hours selector</string>
+    <string name="minutes">Minutes</string>
+    <string name="minutes_picker_description">Minutes selector</string>
+    <string name="seconds">Seconds</string>
+    <string name="seconds_picker_description">Seconds selector</string>
+    <string name="app_bar_edit_title">Edit Clock</string>
+    <string name="app_bar_create_title">New Clock</string>
 </resources>

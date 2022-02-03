@@ -38,6 +38,15 @@
         android:id="@+id/timeControlFragment"
         android:name="dev.amal.chessclock.fragments.time_control_fragment.TimeControlFragment"
         android:label="fragment_time_control"
-        tools:layout="@layout/fragment_time_control" />
+        tools:layout="@layout/fragment_time_control" >
+        <argument
+            android:name="clockId"
+            android:defaultValue="-1L"
+            app:argType="long" />
+        <argument
+            android:name="edit_option"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
 
 </navigation>
