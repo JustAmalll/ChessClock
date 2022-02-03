@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/clockFragment">
+
+    <fragment
+        android:id="@+id/clockFragment"
+        android:name="dev.amal.chessclock.fragments.clock.ClockFragment"
+        android:label="ClockFragment"
+        tools:layout="@layout/fragment_clock">
+        <action
+            android:id="@+id/action_clockFragment_to_clockListFragment"
+            app:destination="@id/clockListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/clockListFragment"
+        android:name="dev.amal.chessclock.fragments.clock_list.ClockListFragment"
+        android:label="fragment_clock_list"
+        tools:layout="@layout/fragment_clock_list">
+        <action
+            android:id="@+id/action_clockListFragment_to_timeControlFragment"
+            app:destination="@id/timeControlFragment" />
+        <action
+            android:id="@+id/action_clockListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="dev.amal.chessclock.fragments.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/timeControlFragment"
+        android:name="dev.amal.chessclock.fragments.time_control_fragment.TimeControlFragment"
+        android:label="fragment_time_control"
+        tools:layout="@layout/fragment_time_control" />
+
+</navigation>
