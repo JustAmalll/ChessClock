@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ChessClock</string>
+    <string name="no_increment_clock">No increment</string>
+    <string name="increment_clock">Increment %1$s</string>
 </resources>
