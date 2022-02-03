@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/save_option_menu"
+        android:title="@string/option_menu_save_title"
+        android:contentDescription="@string/save_clock_description"
+        android:icon="@drawable/ic_check"
+        app:showAsAction="always" />
+
+</menu>

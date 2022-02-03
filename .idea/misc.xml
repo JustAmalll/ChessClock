@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_check.xml" value="0.3675" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_close.xml" value="0.3675" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_settings.xml" value="0.3675" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/fragment_clock.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/fragment_clock_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/fragment_time_control.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/menu/time_control_menu.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
