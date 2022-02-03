@@ -113,6 +113,19 @@ class TimePickerDialog : DialogFragment() {
         cancelText = text
     }
 
+    /**
+     * @param timeMillis time in milliseconds that will
+     * be used to get hours, minutes and seconds to
+     * set initial values
+     */
+    fun setInitialTimeMillis(timeMillis: Long) {
+        initialHour = (timeMillis / (CountDownTimer.ONE_MINUTE * 60)).toInt()
+        initialMinute =
+            ((timeMillis % (CountDownTimer.ONE_MINUTE * 60)) / CountDownTimer.ONE_MINUTE).toInt()
+        val rest = (timeMillis % (CountDownTimer.ONE_MINUTE * 60)) % CountDownTimer.ONE_MINUTE
+        initialSeconds = (rest / CountDownTimer.ONE_SECOND).toInt()
+    }
+
     private fun setupTimePickerLayout() {
         bindViews()
 

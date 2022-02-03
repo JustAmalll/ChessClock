@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.text.format.DateUtils
 import androidx.lifecycle.*
+import dev.amal.chessclock.R
 import dev.amal.chessclock.database.ChessClock
 import dev.amal.chessclock.database.ChessClockDatabase
 import dev.amal.chessclock.fragments.settings.SettingsFragment.Companion.ALERT_TIME_KEY

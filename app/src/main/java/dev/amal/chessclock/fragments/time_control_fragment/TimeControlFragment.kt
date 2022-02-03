@@ -96,6 +96,9 @@ class TimeControlFragment : Fragment() {
     private fun showTimePickerForPlayerOne() {
         val timePicker = TimePickerDialog()
         timePicker.maxValueHour = 10
+        viewModel.chessClock.value?.let { chessClock ->
+            timePicker.setInitialTimeMillis(chessClock.firstPlayerTime)
+        }
         timePicker.setOnTimeSetOption(getString(R.string.set_time_button)) { h, m, s ->
             viewModel.onFirstPlayerTimeSet(h, m, s)
         }
@@ -106,6 +109,9 @@ class TimeControlFragment : Fragment() {
     private fun showTimePickerForPlayerTwo() {
         val timePicker = TimePickerDialog()
         timePicker.maxValueHour = 10
+        viewModel.chessClock.value?.let { chessClock ->
+            timePicker.setInitialTimeMillis(chessClock.secondPlayerTime)
+        }
         timePicker.setOnTimeSetOption(getString(R.string.set_time_button)) { h, m, s ->
             viewModel.onSecondPlayerTimeSet(h, m, s)
         }
@@ -116,6 +122,9 @@ class TimeControlFragment : Fragment() {
     private fun showTimePickerForIncrement() {
         val timePicker = TimePickerDialog()
         timePicker.includeHours = false
+        viewModel.chessClock.value?.let { chessClock ->
+            timePicker.setInitialTimeMillis(chessClock.increment)
+        }
         timePicker.setOnTimeSetOption(getString(R.string.set_time_button)) { _, m, s ->
             viewModel.onIncrementTimeSet(m, s)
         }

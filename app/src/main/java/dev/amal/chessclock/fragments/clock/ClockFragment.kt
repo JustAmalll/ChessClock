@@ -2,6 +2,7 @@ package dev.amal.chessclock.fragments.clock
 
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
@@ -10,6 +11,8 @@ import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -44,8 +47,7 @@ class ClockFragment : Fragment() {
         viewModel = ViewModelProvider(this, factory).get(ClockViewModel::class.java)
         viewModel.checkUpdatedPref()
 
-        // Observers...
-
+        /** Observers */
         viewModel.timeLeftString1.observe(viewLifecycleOwner) {
             binding.textViewClockTop.text = it
         }
@@ -64,19 +66,13 @@ class ClockFragment : Fragment() {
         }
 
         viewModel.showHintOne.observe(viewLifecycleOwner) {
-            if (it == true) {
-                binding.textViewHintTop.visibility = View.VISIBLE
-            } else {
-                binding.textViewHintTop.visibility = View.INVISIBLE
-            }
+            if (it == true) binding.textViewHintTop.visibility = View.VISIBLE
+            else binding.textViewHintTop.visibility = View.INVISIBLE
         }
 
         viewModel.showHintTwo.observe(viewLifecycleOwner) {
-            if (it == true) {
-                binding.textViewHintBottom.visibility = View.VISIBLE
-            } else {
-                binding.textViewHintBottom.visibility = View.INVISIBLE
-            }
+            if (it == true) binding.textViewHintBottom.visibility = View.VISIBLE
+            else binding.textViewHintBottom.visibility = View.INVISIBLE
         }
 
         viewModel.gamePaused.observe(viewLifecycleOwner) {
@@ -100,19 +96,13 @@ class ClockFragment : Fragment() {
         }
 
         viewModel.showAlertTimeOne.observe(viewLifecycleOwner) {
-            if (it == true) {
-                binding.alertTimeIconTop.visibility = View.VISIBLE
-            } else {
-                binding.alertTimeIconTop.visibility = View.INVISIBLE
-            }
+            if (it == true) binding.alertTimeIconTop.visibility = View.VISIBLE
+            else binding.alertTimeIconTop.visibility = View.INVISIBLE
         }
 
         viewModel.showAlertTimeTwo.observe(viewLifecycleOwner) {
-            if (it == true) {
-                binding.alertTimeIconBottom.visibility = View.VISIBLE
-            } else {
-                binding.alertTimeIconBottom.visibility = View.INVISIBLE
-            }
+            if (it == true) binding.alertTimeIconBottom.visibility = View.VISIBLE
+            else binding.alertTimeIconBottom.visibility = View.INVISIBLE
         }
 
         viewModel.timeUpPlayerOne.observe(viewLifecycleOwner) {
@@ -145,15 +135,18 @@ class ClockFragment : Fragment() {
         viewModel.playTimeUpSound.observe(viewLifecycleOwner) {
             if (it == true) playTimeUpSound()
         }
-        //...
 
-        // UI actions
+        /** UI Actions */
         binding.llBackgroundTop.setOnClickListener {
             viewModel.onClickClock1()
+            setCardBgColor(binding.llBackgroundBottom, R.color.orange)
+            setCardBgColor(binding.llBackgroundTop, R.color.light_gray)
         }
 
         binding.llBackgroundBottom.setOnClickListener {
             viewModel.onClickClock2()
+            setCardBgColor(binding.llBackgroundTop, R.color.orange)
+            setCardBgColor(binding.llBackgroundBottom, R.color.light_gray)
         }
 
         binding.actionPause.setOnClickListener {
@@ -187,7 +180,6 @@ class ClockFragment : Fragment() {
         timeUpSound.start()
     }
 
-    @Suppress("DEPRECATION")
     private fun makeVibrate() {
         val vibrator = requireActivity().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -202,9 +194,7 @@ class ClockFragment : Fragment() {
         val restartBuilder = MaterialAlertDialogBuilder(requireContext())
         restartBuilder.apply {
             setTitle(R.string.reset_timer_title)
-            setPositiveButton(R.string.reset_button) { _, _ ->
-                resetTimer()
-            }
+            setPositiveButton(R.string.reset_button) { _, _ -> resetTimer() }
             setNegativeButton(R.string.cancel_button) { _, _ -> // nothing }
             }.create().show()
         }
@@ -221,6 +211,10 @@ class ClockFragment : Fragment() {
     private fun navigateToSettings() {
         findNavController().navigate(R.id.action_clockFragment_to_clockListFragment)
         viewModel.onSettingsNavigated()
+    }
+
+    private fun setCardBgColor(cardView: CardView, @ColorRes color: Int) {
+        cardView.setCardBackgroundColor(ContextCompat.getColor(requireContext(), color))
     }
 
     override fun onDestroyView() {
