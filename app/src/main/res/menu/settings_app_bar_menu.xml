@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/sound_settings"
+        android:contentDescription="@string/sound_settings_icon_description"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings_option_menu_title"
+        app:showAsAction="always" />
+
+</menu>

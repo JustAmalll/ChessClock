@@ -15,4 +15,10 @@
     <string name="option_menu_save_title">Save</string>
     <string name="save_clock_description">Save clock</string>
     <string name="exit_icon_description">Exit</string>
+    <string name="sound_settings_icon_description">Go to settings</string>
+    <string name="settings_option_menu_title">Settings</string>
+    <string name="clock_list_appbar_description">Clock list</string>
+    <string name="back_icon_description">Back</string>
+    <string name="clock_list_appbar_title">Clock List</string>
+    <string name="add_clock_description">Add clock</string>
 </resources>
