@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 import dev.amal.chessclock.utils.ChessUtils.Companion.BLITZ
 import dev.amal.chessclock.utils.ChessUtils.Companion.BULLET
 import dev.amal.chessclock.utils.ChessUtils.Companion.CLASSIC
-import dev.amal.chessclock.utils.ChessUtils.Companion.ONE_MINUTE
 import dev.amal.chessclock.utils.ChessUtils.Companion.RAPID
+import dev.amal.chessclock.utils.CountDownTimer.Companion.ONE_MINUTE
 import kotlin.math.max
 
 @Entity(tableName = "chess_clock")

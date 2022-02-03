@@ -5,8 +5,8 @@ import android.text.format.DateUtils
 import androidx.lifecycle.*
 import dev.amal.chessclock.database.ChessClock
 import dev.amal.chessclock.database.ChessClockDatabase
-import dev.amal.chessclock.utils.ChessUtils.Companion.ONE_MINUTE
-import dev.amal.chessclock.utils.ChessUtils.Companion.ONE_SECOND
+import dev.amal.chessclock.utils.CountDownTimer.Companion.ONE_MINUTE
+import dev.amal.chessclock.utils.CountDownTimer.Companion.ONE_SECOND
 import kotlinx.coroutines.launch
 
 class TimeControlViewModel(

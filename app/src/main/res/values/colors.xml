@@ -18,4 +18,6 @@
     <color name="grey_50">#fafafa</color>
     <color name="blue_600">#1e88e5</color>
 
+    <color name="design_default_color_error">#B00020</color>
+
 </resources>

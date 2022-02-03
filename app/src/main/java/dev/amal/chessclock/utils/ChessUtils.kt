@@ -3,7 +3,8 @@ package dev.amal.chessclock.utils
 import android.content.res.Resources
 import dev.amal.chessclock.R
 import dev.amal.chessclock.database.ChessClock
-import dev.amal.chessclock.utils.ChessUtils.Companion.ONE_MINUTE
+import dev.amal.chessclock.utils.CountDownTimer.Companion.ONE_MINUTE
+import dev.amal.chessclock.utils.CountDownTimer.Companion.ONE_SECOND
 
 class ChessUtils {
 
@@ -13,8 +14,6 @@ class ChessUtils {
         const val RAPID = 60
         const val CLASSIC = 100
         const val CURRENT_CLOCK_KEY = "CURRENT_CLOCK_KEY"
-        const val ONE_MINUTE = 60000L
-        const val ONE_SECOND = 1000L
 
         /**
          * Receives two times for first and second player, and an increment.

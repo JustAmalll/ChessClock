@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_gray">
@@ -20,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tv_top"
+            android:id="@+id/textViewClockTop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -33,7 +34,45 @@
 
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/text_movements_count_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:rotation="180"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/ll_backgroundTop"
+        app:layout_constraintTop_toTopOf="@+id/ll_backgroundTop"
+        tools:text="0d" />
+
+    <ImageView
+        android:id="@+id/alert_time_icon_top"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginVertical="16dp"
+        android:contentDescription="@string/alert_time_icon_description"
+        android:src="@drawable/ic_add"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/ll_backgroundTop"
+        app:layout_constraintEnd_toEndOf="@+id/ll_backgroundTop"
+        app:tint="@color/design_default_color_error" />
+
+    <TextView
+        android:id="@+id/textViewHintTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotation="-180"
+        android:text="@string/tap_to_start_hint"
+        android:textColor="@color/light_gray"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_backgroundTop" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -50,20 +89,32 @@
             android:src="@drawable/ic_settings" />
 
         <ImageView
-            android:id="@+id/pause"
+            android:id="@+id/actionPause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:src="@drawable/ic_pause" />
 
         <ImageView
-            android:id="@+id/update"
+            android:id="@+id/actionRestart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:src="@drawable/ic_refresh" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewHintBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tap_to_start_hint"
+        android:textColor="@color/light_gray"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/ll_backgroundBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ll_backgroundBottom"
@@ -80,7 +131,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/tv_bottom"
+            android:id="@+id/textViewClockBottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -91,5 +142,28 @@
             android:textSize="90sp" />
 
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/alert_time_icon_bottom"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginVertical="16dp"
+        android:contentDescription="@string/alert_time_icon_description"
+        android:src="@drawable/ic_add"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/ll_backgroundBottom"
+        app:layout_constraintTop_toTopOf="@+id/ll_backgroundBottom"
+        app:tint="@color/design_default_color_error" />
+
+    <TextView
+        android:id="@+id/text_movements_count_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/ll_backgroundBottom"
+        app:layout_constraintEnd_toEndOf="@+id/ll_backgroundBottom"
+        tools:text="0d" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
