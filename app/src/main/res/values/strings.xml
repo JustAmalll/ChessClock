@@ -21,7 +21,15 @@
     <string name="back_icon_description">Back</string>
     <string name="clock_list_appbar_title">Clock List</string>
     <string name="add_clock_description">Add clock</string>
+    <string name="delete_clock_title">Delete clock</string>
+    <string name="delete_clock_message">Please confirm</string>
+    <string name="delete_clock_confirm_button">OK</string>
     <string name="cancel_button">Cancel</string>
+    <string name="empty_clock_list_advice">You must have at least one clock</string>
+    <string name="bullet_type">Bullet</string>
+    <string name="blitz_type">Blitz</string>
+    <string name="rapid_type">Rapid</string>
+    <string name="classic_type">Classic</string>
     <string name="set_time_button">OK</string>
     <string name="timer_picker_title">Select time</string>
     <string name="hours">Hours</string>
@@ -32,4 +40,7 @@
     <string name="seconds_picker_description">Seconds selector</string>
     <string name="app_bar_edit_title">Edit Clock</string>
     <string name="app_bar_create_title">New Clock</string>
+    <string name="thumbnail_clock_description">Chess clock thumbnail</string>
+    <string name="edit_menu_item">Edit</string>
+    <string name="delete_menu_item">Delete</string>
 </resources>
