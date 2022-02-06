@@ -1,7 +1,6 @@
 package dev.amal.chessclock.fragments.clock
 
 import android.content.Context
-import android.content.DialogInterface
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Build
@@ -11,25 +10,26 @@ import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.annotation.ColorRes
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.transition.ChangeBounds
+import androidx.transition.TransitionManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentClockBinding
+import dev.amal.chessclock.fragments.settings.SettingsFragment
 
 class ClockFragment : Fragment() {
 
     private var _binding: FragmentClockBinding? = null
     private val binding get() = _binding!!
-
     private lateinit var viewModel: ClockViewModel
-
     private lateinit var clockSound: MediaPlayer
     private lateinit var timeUpSound: MediaPlayer
 
@@ -47,32 +47,60 @@ class ClockFragment : Fragment() {
         viewModel = ViewModelProvider(this, factory).get(ClockViewModel::class.java)
         viewModel.checkUpdatedPref()
 
-        /** Observers */
+        val pref = requireActivity().getSharedPreferences(
+            SettingsFragment.PREFERENCES_NAME, Context.MODE_PRIVATE
+        )
+
+        when (pref.getInt(SettingsFragment.THEME_ID, 2)) {
+            1 -> setFirstTheme()
+            2 -> setSecondTheme()
+            3 -> setThirdTheme()
+            4 -> setFourthTheme()
+            5 -> setFifthTheme()
+            6 -> setSixthTheme()
+        }
+
+        // Observers...
+        viewModel.guidelinePercentage.observe(viewLifecycleOwner) {
+            val changeBoundsTransition = ChangeBounds()
+            changeBoundsTransition.duration = 200
+            TransitionManager.beginDelayedTransition(binding.root, changeBoundsTransition)
+            binding.guideline.setGuidelinePercent(it)
+        }
+
         viewModel.timeLeftString1.observe(viewLifecycleOwner) {
-            binding.textViewClockTop.text = it
+            binding.clock1.textViewClock.text = it
         }
 
         viewModel.timeLeftString2.observe(viewLifecycleOwner) {
-            binding.textViewClockBottom.text = it
+            binding.clock2.textViewClock.text = it
         }
 
         viewModel.navigateToSettings.observe(viewLifecycleOwner) {
-            if (it == true) navigateToSettings()
+            if (it == true) {
+                navigateToSettings()
+            }
         }
 
         viewModel.updateHintText.observe(viewLifecycleOwner) {
-            binding.textViewHintTop.text = getString(R.string.paused_clock_hint)
-            binding.textViewHintBottom.text = getString(R.string.paused_clock_hint)
+            binding.clock1.textViewHint.text = getString(R.string.paused_clock_hint)
+            binding.clock2.textViewHint.text = getString(R.string.paused_clock_hint)
         }
 
         viewModel.showHintOne.observe(viewLifecycleOwner) {
-            if (it == true) binding.textViewHintTop.visibility = View.VISIBLE
-            else binding.textViewHintTop.visibility = View.INVISIBLE
+            if (it == true) {
+                binding.clock1.textViewHint.visibility = View.VISIBLE
+            } else {
+                binding.clock1.textViewHint.visibility = View.INVISIBLE
+            }
         }
 
         viewModel.showHintTwo.observe(viewLifecycleOwner) {
-            if (it == true) binding.textViewHintBottom.visibility = View.VISIBLE
-            else binding.textViewHintBottom.visibility = View.INVISIBLE
+            if (it == true) {
+                binding.clock2.textViewHint.visibility = View.VISIBLE
+            } else {
+                binding.clock2.textViewHint.visibility = View.INVISIBLE
+            }
         }
 
         viewModel.gamePaused.observe(viewLifecycleOwner) {
@@ -88,35 +116,41 @@ class ClockFragment : Fragment() {
         }
 
         viewModel.playerOneMoves.observe(viewLifecycleOwner) {
-            binding.textMovementsCountTop.text = it.toString()
+            binding.clock1.textMovementsCount.text = it.toString()
         }
 
         viewModel.playerTwoMoves.observe(viewLifecycleOwner) {
-            binding.textMovementsCountBottom.text = it.toString()
+            binding.clock2.textMovementsCount.text = it.toString()
         }
 
         viewModel.showAlertTimeOne.observe(viewLifecycleOwner) {
-            if (it == true) binding.alertTimeIconTop.visibility = View.VISIBLE
-            else binding.alertTimeIconTop.visibility = View.INVISIBLE
+            if (it == true) {
+                binding.clock1.alertTimeIcon.visibility = View.VISIBLE
+            } else {
+                binding.clock1.alertTimeIcon.visibility = View.INVISIBLE
+            }
         }
 
         viewModel.showAlertTimeTwo.observe(viewLifecycleOwner) {
-            if (it == true) binding.alertTimeIconBottom.visibility = View.VISIBLE
-            else binding.alertTimeIconBottom.visibility = View.INVISIBLE
+            if (it == true) {
+                binding.clock2.alertTimeIcon.visibility = View.VISIBLE
+            } else {
+                binding.clock2.alertTimeIcon.visibility = View.INVISIBLE
+            }
         }
 
         viewModel.timeUpPlayerOne.observe(viewLifecycleOwner) {
-            binding.llBackgroundTop.isClickable = false
-            binding.llBackgroundBottom.isClickable = false
-            binding.llBackgroundTop.setCardBackgroundColor(
+            binding.clock1.root.isClickable = false
+            binding.clock2.root.isClickable = false
+            binding.clock1Container.setBackgroundColor(
                 ContextCompat.getColor(requireContext(), R.color.design_default_color_error)
             )
         }
 
         viewModel.timeUpPlayerTwo.observe(viewLifecycleOwner) {
-            binding.llBackgroundTop.isClickable = false
-            binding.llBackgroundBottom.isClickable = false
-            binding.llBackgroundBottom.setCardBackgroundColor(
+            binding.clock1.root.isClickable = false
+            binding.clock2.root.isClickable = false
+            binding.clock2Container.setBackgroundColor(
                 ContextCompat.getColor(requireContext(), R.color.design_default_color_error)
             )
         }
@@ -133,20 +167,21 @@ class ClockFragment : Fragment() {
         }
 
         viewModel.playTimeUpSound.observe(viewLifecycleOwner) {
-            if (it == true) playTimeUpSound()
+            if (it == true) {
+                playTimeUpSound()
+            }
         }
+        //...
 
-        /** UI Actions */
-        binding.llBackgroundTop.setOnClickListener {
+        setClock1Theme()
+
+        // UI actions
+        binding.clock1.root.setOnClickListener {
             viewModel.onClickClock1()
-            setCardBgColor(binding.llBackgroundBottom, R.color.orange)
-            setCardBgColor(binding.llBackgroundTop, R.color.light_gray)
         }
 
-        binding.llBackgroundBottom.setOnClickListener {
+        binding.clock2.root.setOnClickListener {
             viewModel.onClickClock2()
-            setCardBgColor(binding.llBackgroundTop, R.color.orange)
-            setCardBgColor(binding.llBackgroundBottom, R.color.light_gray)
         }
 
         binding.actionPause.setOnClickListener {
@@ -160,8 +195,80 @@ class ClockFragment : Fragment() {
         binding.actionGoToSettings.setOnClickListener {
             viewModel.goToSettingsAction()
         }
-
+        //...
         return binding.root
+    }
+
+    private fun setClock1Theme() {
+        binding.clock1.textViewClock
+            .setTextColor(ContextCompat.getColor(requireContext(), R.color.grey_100))
+
+        binding.clock1.textViewHint
+            .setTextColor(ContextCompat.getColor(requireContext(), R.color.grey_100))
+
+        binding.clock1.textMovementsCount
+            .setTextColor(ContextCompat.getColor(requireContext(), R.color.grey_100))
+    }
+
+    private fun setFirstTheme() {
+        binding.apply {
+            setBackgroundColor(clock1Container, R.color.theme_one_main)
+            setBackgroundColor(clock2Container, R.color.theme_one_secondary)
+            clock1.textViewClock.setTextColor(Color.WHITE)
+            clock2.textViewClock.setTextColor(Color.WHITE)
+        }
+    }
+
+    private fun setSecondTheme() {
+        binding.apply {
+            setBackgroundColor(clock1Container, R.color.theme_two_main)
+            clock2Container.setBackgroundColor(Color.WHITE)
+            setTextColor(clock2.textViewClock, R.color.theme_two_main)
+        }
+    }
+
+    private fun setThirdTheme() {
+        binding.apply {
+            setBackgroundColor(clock1Container, R.color.theme_three_main)
+            setBackgroundColor(clock2Container, R.color.theme_three_secondary)
+            setTextColor(clock2.textViewClock, R.color.theme_two_main)
+            clock1.textViewClock.setTextColor(Color.WHITE)
+        }
+    }
+
+    private fun setFourthTheme() {
+        binding.apply {
+            setBackgroundColor(clock1Container, R.color.theme_four_main)
+            setBackgroundColor(clock2Container, R.color.theme_four_secondary)
+            clock1.textViewClock.setTextColor(Color.WHITE)
+            clock2.textViewClock.setTextColor(Color.WHITE)
+        }
+    }
+
+    private fun setFifthTheme() {
+        binding.apply {
+            setBackgroundColor(clock1Container, R.color.theme_five_main)
+            setBackgroundColor(clock2Container, R.color.theme_five_secondary)
+            clock1.textViewClock.setTextColor(Color.WHITE)
+            clock2.textViewClock.setTextColor(Color.WHITE)
+        }
+    }
+
+    private fun setSixthTheme() {
+        binding.apply {
+            setBackgroundColor(clock1Container, R.color.theme_six_main)
+            setBackgroundColor(clock2Container, R.color.theme_six_secondary)
+            setTextColor(clock2.textViewClock, R.color.theme_six_main)
+            setTextColor(clock1.textViewClock, R.color.theme_six_secondary)
+        }
+    }
+
+    private fun setBackgroundColor(view: View, @ColorRes color: Int) {
+        view.setBackgroundColor(ContextCompat.getColor(requireContext(), color))
+    }
+
+    private fun setTextColor(view: TextView, @ColorRes color: Int) {
+        view.setTextColor(ContextCompat.getColor(requireContext(), color))
     }
 
     private fun playClockSound() {
@@ -180,6 +287,7 @@ class ClockFragment : Fragment() {
         timeUpSound.start()
     }
 
+    @Suppress("DEPRECATION")
     private fun makeVibrate() {
         val vibrator = requireActivity().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -195,9 +303,8 @@ class ClockFragment : Fragment() {
         restartBuilder.apply {
             setTitle(R.string.reset_timer_title)
             setPositiveButton(R.string.reset_button) { _, _ -> resetTimer() }
-            setNegativeButton(R.string.cancel_button) { _, _ -> // nothing }
-            }.create().show()
-        }
+            setNegativeButton(R.string.cancel_button) { _, _ -> }
+        }.create().show()
     }
 
     private fun resetTimer() {
@@ -209,16 +316,13 @@ class ClockFragment : Fragment() {
     }
 
     private fun navigateToSettings() {
-        findNavController().navigate(R.id.action_clockFragment_to_clockListFragment)
+        val action = ClockFragmentDirections.actionClockFragmentToClockListFragment()
+        this.findNavController().navigate(action)
         viewModel.onSettingsNavigated()
     }
 
-    private fun setCardBgColor(cardView: CardView, @ColorRes color: Int) {
-        cardView.setCardBackgroundColor(ContextCompat.getColor(requireContext(), color))
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         _binding = null
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Chess Clock</string>
+    <string name="sound_settings_title">Звук</string>
+    <string name="sound_settings_summary">Звуковой сигнал после каждого хода</string>
+    <string name="vibrate_settings_title">Вибрация</string>
+    <string name="low_time_warning_settings_title">Предупреждать о приближении к \nзаданному времени</string>
+    <string name="settings_option_menu_title">"Настройки"</string>
+    <string name="alert_time_title">Время предупреждения</string>
+    <string name="settings_appbar_title">"Настройки "</string>
+    <string name="settings_app_bar_description">"Настройки "</string>
+    <string name="themes_appbar_title">Темы</string>
+</resources>

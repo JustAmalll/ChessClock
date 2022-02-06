@@ -2,12 +2,15 @@ package dev.amal.chessclock.fragments.settings
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.text.format.DateUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentSettingsBinding
@@ -19,7 +22,7 @@ import dev.amal.chessclock.utils.TimePickerDialog
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
-    private val binding: FragmentSettingsBinding get() = _binding!!
+    private val binding get() = _binding!!
 
     private lateinit var pref: SharedPreferences
 
@@ -29,6 +32,7 @@ class SettingsFragment : Fragment() {
         const val VIBRATE_KEY = "vibrate"
         const val LOW_TIME_WARNING_KEY = "low_time_warning"
         const val ALERT_TIME_KEY = "alert_time"
+        const val THEME_ID = "theme_id"
     }
 
     override fun onCreateView(
@@ -68,13 +72,48 @@ class SettingsFragment : Fragment() {
 
         binding.lowTimeWarningSwitch.setOnCheckedChangeListener { _, isChecked ->
             pref.edit().putBoolean(LOW_TIME_WARNING_KEY, isChecked).apply()
+            renderLowTimeWarningSwitch(isChecked)
         }
 
         binding.alertTimeSettingContainer.setOnClickListener {
             showTimePickerForAlertTime()
         }
 
+        binding.themeSettingsContainer.setOnClickListener {
+            findNavController().navigate(R.id.action_settingsFragment_to_themeCustomizationFragment)
+        }
+
         return binding.root
+    }
+
+    private fun renderLowTimeWarningSwitch(boolean: Boolean) {
+        if (!boolean) {
+            binding.apply {
+                vibrateSettingContainer.isClickable = false
+                vibrateSwitch.isEnabled = false
+                vibrateSettingsTitle.setTextColor(
+                    ContextCompat.getColor(requireContext(), R.color.inactive_text)
+                )
+                alertTimeSettingContainer.isEnabled = false
+                alertTimeTitle.setTextColor(
+                    ContextCompat.getColor(requireContext(), R.color.inactive_text)
+                )
+                alertTimeSummary.setTextColor(
+                    ContextCompat.getColor(requireContext(), R.color.inactive_text)
+                )
+            }
+        } else {
+            binding.apply {
+                vibrateSettingContainer.isClickable = true
+                vibrateSwitch.isEnabled = true
+                alertTimeSettingContainer.isEnabled = true
+                vibrateSettingsTitle.setTextColor(Color.BLACK)
+                alertTimeTitle.setTextColor(Color.BLACK)
+                alertTimeSummary.setTextColor(
+                    ContextCompat.getColor(requireContext(), R.color.help_text)
+                )
+            }
+        }
     }
 
     private fun loadData() {
@@ -86,6 +125,7 @@ class SettingsFragment : Fragment() {
 
         val lowTimeWarning = pref.getBoolean(LOW_TIME_WARNING_KEY, false)
         binding.lowTimeWarningSwitch.isChecked = lowTimeWarning
+        renderLowTimeWarningSwitch(lowTimeWarning)
 
         val alertTime = pref.getLong(ALERT_TIME_KEY, 0) / ONE_SECOND
         val alertTimeText = DateUtils.formatElapsedTime(alertTime)
@@ -96,9 +136,7 @@ class SettingsFragment : Fragment() {
         val timePicker = TimePickerDialog()
         timePicker.includeHours = false
         timePicker.setInitialTimeMillis(pref.getLong(ALERT_TIME_KEY, 0))
-        timePicker.setOnTimeSetOption(getString(R.string.set_time_button)) { _, m, s ->
-            onTimeAlertSet(m, s)
-        }
+        timePicker.setOnTimeSetOption(getString(R.string.set_time_button)) { _, m, s -> onTimeAlertSet(m, s) }
         timePicker.setTitle(getString(R.string.timer_picker_title))
         timePicker.show(parentFragmentManager, "time_picker")
     }
@@ -126,5 +164,4 @@ class SettingsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

@@ -3,20 +3,38 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable-v24/ic_pause_btn.xml" value="0.2115" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable-v24/ic_restart_btn.xml" value="0.2115" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable-v24/ic_settings_btn.xml" value="0.2115" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable-v24/ic_theme_round_second.xml" value="0.2115" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable-v24/ic_warning.xml" value="0.2115" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_add.xml" value="0.3675" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_arrow_back.xml" value="0.3675" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.2115" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_blitz_game.xml" value="0.3675" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_bullet_game.xml" value="0.3675" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_check.xml" value="0.3675" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_classic_game.xml" value="0.3675" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_close.xml" value="0.3675" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_pause.xml" value="0.2115" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_rapid_game.xml" value="0.3675" />
-        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_settings.xml" value="0.3675" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_refresh.xml" value="0.2115" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_settings.xml" value="0.22" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_settings_filled.xml" value="0.2115" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_theme_round_first.xml" value="0.2115" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_theme_round_five.xml" value="0.2115" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_theme_round_four.xml" value="0.2115" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_theme_round_one.xml" value="0.2115" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_theme_round_six.xml" value="0.2115" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_theme_round_three.xml" value="0.2115" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/drawable/ic_theme_round_two.xml" value="0.2115" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/chess_clock_item_list.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/fragment_clock.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/clock.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/fragment_clock.xml" value="0.33" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/fragment_clock_list.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/fragment_settings.xml" value="0.3490740740740741" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/fragment_settings.xml" value="0.33" />
+        <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/fragment_theme_customization.xml" value="0.33" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/fragment_time_control.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/layout/time_picker_content.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/lilba/Desktop/ChessClock/app/src/main/res/menu/settings_app_bar_menu.xml" value="0.36666666666666664" />

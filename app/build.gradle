@@ -56,4 +56,8 @@ dependencies {
     // Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:$room_version"
     kapt("androidx.room:room-compiler:$room_version")
+
+    implementation "com.dolatkia:animated-theme-manager:1.1.4"
+
+    implementation "com.airbnb.android:lottie:3.4.0"
 }

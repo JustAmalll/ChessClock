@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.text.format.DateUtils
 import androidx.lifecycle.*
-import dev.amal.chessclock.R
 import dev.amal.chessclock.database.ChessClock
 import dev.amal.chessclock.database.ChessClockDatabase
 import dev.amal.chessclock.fragments.settings.SettingsFragment.Companion.ALERT_TIME_KEY
@@ -97,8 +96,8 @@ class ClockViewModel(application: Application) : ViewModel() {
     private val _gamePaused = MutableLiveData<Boolean>()
     val gamePaused: LiveData<Boolean> get() = _gamePaused
 
-    private val _navigateToSettins = MutableLiveData<Boolean>()
-    val navigateToSettings: LiveData<Boolean> get() = _navigateToSettins
+    private val _navigateToSettings = MutableLiveData<Boolean>()
+    val navigateToSettings: LiveData<Boolean> get() = _navigateToSettings
 
     private val _turn = MutableLiveData<Int>()
     private val turn: LiveData<Int> get() = _turn
@@ -148,7 +147,7 @@ class ClockViewModel(application: Application) : ViewModel() {
         setAlertTimeChecks()
     }
 
-    private fun updateClock() {
+    private fun updateClock () {
         val clockIdUpdated = pref.getLong(CURRENT_CLOCK_KEY, -1)
         if (clockIdUpdated != clockId) {
             clockId = clockIdUpdated
@@ -158,7 +157,7 @@ class ClockViewModel(application: Application) : ViewModel() {
         }
     }
 
-    private fun setPlayerMovesInitialValues() {
+    private fun setPlayerMovesInitialValues () {
         _playerOneMoves.value = 0
         _playerTwoMoves.value = 0
     }
@@ -168,7 +167,7 @@ class ClockViewModel(application: Application) : ViewModel() {
         _showHintTwo.value = true
     }
 
-    private fun setShowAlertTimeInitialValues() {
+    private fun setShowAlertTimeInitialValues () {
         _showAlertTimeOne.value = false
         _showAlertTimeTwo.value = false
     }
@@ -230,12 +229,12 @@ class ClockViewModel(application: Application) : ViewModel() {
         playTimeUpSound()
     }
 
-    private fun playTimeUpSound() {
+    private fun playTimeUpSound () {
         _playTimeUpSound.value = true
         _playTimeUpSound.value = false
     }
 
-    private fun vibrate() {
+    private fun vibrate () {
         if (vibrationActive) {
             _vibrate.value = true
             _vibrate.value = false
@@ -316,11 +315,11 @@ class ClockViewModel(application: Application) : ViewModel() {
     }
 
     fun goToSettingsAction() {
-        _navigateToSettins.value = true
+        _navigateToSettings.value = true
     }
 
     fun onSettingsNavigated() {
-        _navigateToSettins.value = false
+        _navigateToSettings.value = false
     }
 
     fun donePlayingClockSound() {
@@ -351,7 +350,8 @@ class ClockViewModel(application: Application) : ViewModel() {
                         _showAlertTimeOne.value = false
                     }
                 }
-            } else {
+            }
+            else {
                 timeAlertCheck1 = {}
             }
             if (timeAlert < clock?.secondPlayerTime ?: ONE_MINUTE * 5) {
@@ -363,7 +363,8 @@ class ClockViewModel(application: Application) : ViewModel() {
                         _showAlertTimeTwo.value = false
                     }
                 }
-            } else {
+            }
+            else {
                 timeAlertCheck2 = {}
             }
         } else {

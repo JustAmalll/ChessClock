@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/check/baseline_check_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/settings/baseline_settings_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_check" />
-                            <entry key="sourceFile" value="C:\Users\lilba\Desktop\ChessClock" />
+                            <entry key="outputName" value="ic_baseline_settings_24" />
+                            <entry key="sourceFile" value="C:\Users\lilba\Desktop\theme_round.svg" />
                           </map>
                         </option>
                       </PersistentState>
