@@ -3,6 +3,7 @@ package dev.amal.chessclock.fragments.settings
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.text.format.DateUtils
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColorFilter
 import androidx.navigation.fragment.findNavController
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentSettingsBinding
@@ -136,7 +138,12 @@ class SettingsFragment : Fragment() {
         val timePicker = TimePickerDialog()
         timePicker.includeHours = false
         timePicker.setInitialTimeMillis(pref.getLong(ALERT_TIME_KEY, 0))
-        timePicker.setOnTimeSetOption(getString(R.string.set_time_button)) { _, m, s -> onTimeAlertSet(m, s) }
+        timePicker.setOnTimeSetOption(getString(R.string.set_time_button)) { _, m, s ->
+            onTimeAlertSet(
+                m,
+                s
+            )
+        }
         timePicker.setTitle(getString(R.string.timer_picker_title))
         timePicker.show(parentFragmentManager, "time_picker")
     }

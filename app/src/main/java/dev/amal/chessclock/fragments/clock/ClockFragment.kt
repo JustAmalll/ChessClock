@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.ColorRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -21,11 +22,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import dev.amal.chessclock.BaseFragment
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentClockBinding
 import dev.amal.chessclock.fragments.settings.SettingsFragment
 
-class ClockFragment : Fragment() {
+class ClockFragment : BaseFragment() {
 
     private var _binding: FragmentClockBinding? = null
     private val binding get() = _binding!!
@@ -124,19 +126,13 @@ class ClockFragment : Fragment() {
         }
 
         viewModel.showAlertTimeOne.observe(viewLifecycleOwner) {
-            if (it == true) {
-                binding.clock1.alertTimeIcon.visibility = View.VISIBLE
-            } else {
-                binding.clock1.alertTimeIcon.visibility = View.INVISIBLE
-            }
+            if (it == true) binding.clock1.alertTimeIcon.visibility = View.VISIBLE
+            else binding.clock1.alertTimeIcon.visibility = View.INVISIBLE
         }
 
         viewModel.showAlertTimeTwo.observe(viewLifecycleOwner) {
-            if (it == true) {
-                binding.clock2.alertTimeIcon.visibility = View.VISIBLE
-            } else {
-                binding.clock2.alertTimeIcon.visibility = View.INVISIBLE
-            }
+            if (it == true) binding.clock2.alertTimeIcon.visibility = View.VISIBLE
+            else binding.clock2.alertTimeIcon.visibility = View.INVISIBLE
         }
 
         viewModel.timeUpPlayerOne.observe(viewLifecycleOwner) {
@@ -212,63 +208,67 @@ class ClockFragment : Fragment() {
 
     private fun setFirstTheme() {
         binding.apply {
-            setBackgroundColor(clock1Container, R.color.theme_one_main)
-            setBackgroundColor(clock2Container, R.color.theme_one_secondary)
-            clock1.textViewClock.setTextColor(Color.WHITE)
-            clock2.textViewClock.setTextColor(Color.WHITE)
+            clock1Container.setBgColor(R.color.theme_one_main)
+            clock2Container.setBgColor(R.color.theme_one_secondary)
+            clock1.textViewClock.setTextViewColor()
+            clock2.textViewClock.setTextViewColor()
+            clock1.textViewHint.setTextViewColor()
+            clock2.textViewHint.setTextViewColor()
+            clock1.textMovementsCount.setTextViewColor()
+            clock2.textMovementsCount.setTextViewColor()
         }
     }
 
     private fun setSecondTheme() {
         binding.apply {
-            setBackgroundColor(clock1Container, R.color.theme_two_main)
+            clock1Container.setBgColor(R.color.theme_two_main)
             clock2Container.setBackgroundColor(Color.WHITE)
-            setTextColor(clock2.textViewClock, R.color.theme_two_main)
+            clock2.textViewClock.setTextViewColor(R.color.theme_two_main)
+            clock1.textViewHint.setTextViewColor()
+            clock2.textViewHint.setTextViewColor(R.color.theme_two_main)
         }
     }
 
     private fun setThirdTheme() {
         binding.apply {
-            setBackgroundColor(clock1Container, R.color.theme_three_main)
-            setBackgroundColor(clock2Container, R.color.theme_three_secondary)
-            setTextColor(clock2.textViewClock, R.color.theme_two_main)
-            clock1.textViewClock.setTextColor(Color.WHITE)
+            clock1Container.setBgColor(R.color.theme_three_main)
+            clock2Container.setBgColor(R.color.theme_three_secondary)
+            clock1.textViewClock.setTextViewColor()
+            clock2.textViewClock.setTextViewColor(R.color.theme_two_main)
+            clock1.textViewHint.setTextViewColor()
+            clock2.textViewHint.setTextViewColor(R.color.theme_two_main)
         }
     }
 
     private fun setFourthTheme() {
         binding.apply {
-            setBackgroundColor(clock1Container, R.color.theme_four_main)
-            setBackgroundColor(clock2Container, R.color.theme_four_secondary)
-            clock1.textViewClock.setTextColor(Color.WHITE)
-            clock2.textViewClock.setTextColor(Color.WHITE)
+            clock1Container.setBgColor(R.color.theme_four_main)
+            clock2Container.setBgColor(R.color.theme_four_secondary)
+            clock1.textViewClock.setTextViewColor()
+            clock2.textViewClock.setTextViewColor()
         }
     }
 
     private fun setFifthTheme() {
         binding.apply {
-            setBackgroundColor(clock1Container, R.color.theme_five_main)
-            setBackgroundColor(clock2Container, R.color.theme_five_secondary)
-            clock1.textViewClock.setTextColor(Color.WHITE)
-            clock2.textViewClock.setTextColor(Color.WHITE)
+            clock1Container.setBgColor(R.color.theme_five_main)
+            clock2Container.setBgColor(R.color.theme_five_secondary)
+            clock1.textViewClock.setTextViewColor()
+            clock2.textViewClock.setTextViewColor()
         }
     }
 
     private fun setSixthTheme() {
         binding.apply {
-            setBackgroundColor(clock1Container, R.color.theme_six_main)
-            setBackgroundColor(clock2Container, R.color.theme_six_secondary)
-            setTextColor(clock2.textViewClock, R.color.theme_six_main)
-            setTextColor(clock1.textViewClock, R.color.theme_six_secondary)
+            clock1Container.setBgColor(R.color.theme_six_main)
+            clock2Container.setBgColor(R.color.theme_six_secondary)
+            clock1.textViewClock.setTextViewColor(R.color.theme_six_secondary)
+            clock1.textViewHint.setTextViewColor(R.color.theme_six_secondary)
+            clock1.textMovementsCount.setTextViewColor(R.color.theme_six_main)
+            clock2.textViewClock.setTextViewColor(R.color.theme_six_main)
+            clock2.textViewHint.setTextViewColor(R.color.theme_six_main)
+            clock2.textMovementsCount.setTextViewColor(R.color.theme_six_main)
         }
-    }
-
-    private fun setBackgroundColor(view: View, @ColorRes color: Int) {
-        view.setBackgroundColor(ContextCompat.getColor(requireContext(), color))
-    }
-
-    private fun setTextColor(view: TextView, @ColorRes color: Int) {
-        view.setTextColor(ContextCompat.getColor(requireContext(), color))
     }
 
     private fun playClockSound() {

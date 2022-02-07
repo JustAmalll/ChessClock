@@ -70,7 +70,9 @@
         tools:layout="@layout/fragment_theme_customization">
         <action
             android:id="@+id/action_themeCustomizationFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/settingsFragment"
+            app:popUpTo="@id/settingsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

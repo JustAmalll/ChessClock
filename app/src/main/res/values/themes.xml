@@ -28,8 +28,14 @@
         <item name="colorSecondary">#333333</item>
     </style>
 
-    <style name="FirstTheme">
-        <item name="backgroundColor">#f5907c</item>
+    <style name="Widget.App.Switch.First" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Switch</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Switch.First" parent="">
+        <item name="switchMinWidth">56dp</item>
+        <item name="colorOnSurface">@color/theme_one_main</item>
+        <item name="colorSecondary">@color/theme_one_secondary</item>
     </style>
 
 </resources>
