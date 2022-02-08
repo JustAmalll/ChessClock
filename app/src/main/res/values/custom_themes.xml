@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ThemeFirst">
+        <item name="textColorTop">@color/white</item>
+        <item name="textColorBottom">@color/white</item>
+        <item name="backgroundColorTop">@color/theme_one_main</item>
+        <item name="backgroundColorBottom">@color/theme_one_secondary</item>
+    </style>
+
+    <style name="ThemeSecond">
+        <item name="textColorTop">@color/white</item>
+        <item name="textColorBottom">@color/theme_two_main</item>
+        <item name="backgroundColorTop">@color/theme_two_main</item>
+        <item name="backgroundColorBottom">@color/white</item>
+    </style>
+
+    <style name="ThemeThird">
+        <item name="textColorTop">@color/white</item>
+        <item name="textColorBottom">@color/theme_two_main</item>
+        <item name="backgroundColorTop">@color/theme_three_main</item>
+        <item name="backgroundColorBottom">@color/theme_three_secondary</item>
+    </style>
+
+    <style name="ThemeFourth">
+        <item name="textColorTop">@color/white</item>
+        <item name="textColorBottom">@color/white</item>
+        <item name="backgroundColorTop">@color/theme_four_main</item>
+        <item name="backgroundColorBottom">@color/theme_four_secondary</item>
+    </style>
+
+    <style name="ThemeFifth">
+        <item name="textColorTop">@color/white</item>
+        <item name="textColorBottom">@color/white</item>
+        <item name="backgroundColorTop">@color/theme_five_main</item>
+        <item name="backgroundColorBottom">@color/theme_five_secondary</item>
+    </style>
+
+    <style name="ThemeSixth">
+        <item name="textColorTop">@color/theme_six_secondary</item>
+        <item name="textColorBottom">@color/theme_six_main</item>
+        <item name="backgroundColorTop">@color/theme_six_main</item>
+        <item name="backgroundColorBottom">@color/theme_six_secondary</item>
+    </style>
+
+</resources>

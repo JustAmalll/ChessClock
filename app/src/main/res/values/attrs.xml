@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="themes">
+        <attr name="textColorTop" format="reference"/>
+        <attr name="textColorBottom" format="reference"/>
+        <attr name="backgroundColorTop" format="reference" />
+        <attr name="backgroundColorBottom" format="reference" />
+    </declare-styleable>
+</resources>

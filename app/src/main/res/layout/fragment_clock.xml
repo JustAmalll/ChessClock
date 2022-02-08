@@ -10,7 +10,7 @@
         android:id="@+id/clock1_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/grey_800"
+        android:background="?backgroundColorTop"
         android:orientation="vertical"
         android:paddingTop="40dp"
         android:paddingBottom="8dp"
@@ -37,7 +37,7 @@
         android:id="@+id/clock2_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/grey_100"
+        android:background="?backgroundColorBottom"
         android:orientation="vertical"
         android:paddingTop="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,7 +47,7 @@
 
         <include
             android:id="@+id/clock2"
-            layout="@layout/clock" />
+            layout="@layout/clock_bottom" />
 
     </LinearLayout>
 

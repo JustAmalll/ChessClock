@@ -10,11 +10,8 @@ import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -26,6 +23,7 @@ import dev.amal.chessclock.BaseFragment
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentClockBinding
 import dev.amal.chessclock.fragments.settings.SettingsFragment
+
 
 class ClockFragment : BaseFragment() {
 
@@ -41,6 +39,8 @@ class ClockFragment : BaseFragment() {
     ): View {
         _binding = FragmentClockBinding.inflate(inflater, container, false)
 
+        (activity as AppCompatActivity).supportActionBar?.hide()
+
         clockSound = MediaPlayer.create(requireContext(), R.raw.chess_clock_sound)
         timeUpSound = MediaPlayer.create(context, R.raw.time_up_sound)
 
@@ -48,19 +48,6 @@ class ClockFragment : BaseFragment() {
         val factory = ClocksViewModelFactory(application)
         viewModel = ViewModelProvider(this, factory).get(ClockViewModel::class.java)
         viewModel.checkUpdatedPref()
-
-        val pref = requireActivity().getSharedPreferences(
-            SettingsFragment.PREFERENCES_NAME, Context.MODE_PRIVATE
-        )
-
-        when (pref.getInt(SettingsFragment.THEME_ID, 2)) {
-            1 -> setFirstTheme()
-            2 -> setSecondTheme()
-            3 -> setThirdTheme()
-            4 -> setFourthTheme()
-            5 -> setFifthTheme()
-            6 -> setSixthTheme()
-        }
 
         // Observers...
         viewModel.guidelinePercentage.observe(viewLifecycleOwner) {
@@ -79,9 +66,7 @@ class ClockFragment : BaseFragment() {
         }
 
         viewModel.navigateToSettings.observe(viewLifecycleOwner) {
-            if (it == true) {
-                navigateToSettings()
-            }
+            if (it == true) navigateToSettings()
         }
 
         viewModel.updateHintText.observe(viewLifecycleOwner) {
@@ -90,19 +75,13 @@ class ClockFragment : BaseFragment() {
         }
 
         viewModel.showHintOne.observe(viewLifecycleOwner) {
-            if (it == true) {
-                binding.clock1.textViewHint.visibility = View.VISIBLE
-            } else {
-                binding.clock1.textViewHint.visibility = View.INVISIBLE
-            }
+            if (it == true) binding.clock1.textViewHint.visibility = View.VISIBLE
+            else binding.clock1.textViewHint.visibility = View.INVISIBLE
         }
 
         viewModel.showHintTwo.observe(viewLifecycleOwner) {
-            if (it == true) {
-                binding.clock2.textViewHint.visibility = View.VISIBLE
-            } else {
-                binding.clock2.textViewHint.visibility = View.INVISIBLE
-            }
+            if (it == true) binding.clock2.textViewHint.visibility = View.VISIBLE
+            else binding.clock2.textViewHint.visibility = View.INVISIBLE
         }
 
         viewModel.gamePaused.observe(viewLifecycleOwner) {
@@ -167,9 +146,6 @@ class ClockFragment : BaseFragment() {
                 playTimeUpSound()
             }
         }
-        //...
-
-        setClock1Theme()
 
         // UI actions
         binding.clock1.root.setOnClickListener {
@@ -193,82 +169,6 @@ class ClockFragment : BaseFragment() {
         }
         //...
         return binding.root
-    }
-
-    private fun setClock1Theme() {
-        binding.clock1.textViewClock
-            .setTextColor(ContextCompat.getColor(requireContext(), R.color.grey_100))
-
-        binding.clock1.textViewHint
-            .setTextColor(ContextCompat.getColor(requireContext(), R.color.grey_100))
-
-        binding.clock1.textMovementsCount
-            .setTextColor(ContextCompat.getColor(requireContext(), R.color.grey_100))
-    }
-
-    private fun setFirstTheme() {
-        binding.apply {
-            clock1Container.setBgColor(R.color.theme_one_main)
-            clock2Container.setBgColor(R.color.theme_one_secondary)
-            clock1.textViewClock.setTextViewColor()
-            clock2.textViewClock.setTextViewColor()
-            clock1.textViewHint.setTextViewColor()
-            clock2.textViewHint.setTextViewColor()
-            clock1.textMovementsCount.setTextViewColor()
-            clock2.textMovementsCount.setTextViewColor()
-        }
-    }
-
-    private fun setSecondTheme() {
-        binding.apply {
-            clock1Container.setBgColor(R.color.theme_two_main)
-            clock2Container.setBackgroundColor(Color.WHITE)
-            clock2.textViewClock.setTextViewColor(R.color.theme_two_main)
-            clock1.textViewHint.setTextViewColor()
-            clock2.textViewHint.setTextViewColor(R.color.theme_two_main)
-        }
-    }
-
-    private fun setThirdTheme() {
-        binding.apply {
-            clock1Container.setBgColor(R.color.theme_three_main)
-            clock2Container.setBgColor(R.color.theme_three_secondary)
-            clock1.textViewClock.setTextViewColor()
-            clock2.textViewClock.setTextViewColor(R.color.theme_two_main)
-            clock1.textViewHint.setTextViewColor()
-            clock2.textViewHint.setTextViewColor(R.color.theme_two_main)
-        }
-    }
-
-    private fun setFourthTheme() {
-        binding.apply {
-            clock1Container.setBgColor(R.color.theme_four_main)
-            clock2Container.setBgColor(R.color.theme_four_secondary)
-            clock1.textViewClock.setTextViewColor()
-            clock2.textViewClock.setTextViewColor()
-        }
-    }
-
-    private fun setFifthTheme() {
-        binding.apply {
-            clock1Container.setBgColor(R.color.theme_five_main)
-            clock2Container.setBgColor(R.color.theme_five_secondary)
-            clock1.textViewClock.setTextViewColor()
-            clock2.textViewClock.setTextViewColor()
-        }
-    }
-
-    private fun setSixthTheme() {
-        binding.apply {
-            clock1Container.setBgColor(R.color.theme_six_main)
-            clock2Container.setBgColor(R.color.theme_six_secondary)
-            clock1.textViewClock.setTextViewColor(R.color.theme_six_secondary)
-            clock1.textViewHint.setTextViewColor(R.color.theme_six_secondary)
-            clock1.textMovementsCount.setTextViewColor(R.color.theme_six_main)
-            clock2.textViewClock.setTextViewColor(R.color.theme_six_main)
-            clock2.textViewHint.setTextViewColor(R.color.theme_six_main)
-            clock2.textMovementsCount.setTextViewColor(R.color.theme_six_main)
-        }
     }
 
     private fun playClockSound() {
@@ -321,8 +221,8 @@ class ClockFragment : BaseFragment() {
         viewModel.onSettingsNavigated()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

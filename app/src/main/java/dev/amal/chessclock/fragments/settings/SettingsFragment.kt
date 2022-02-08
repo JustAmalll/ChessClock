@@ -138,12 +138,7 @@ class SettingsFragment : Fragment() {
         val timePicker = TimePickerDialog()
         timePicker.includeHours = false
         timePicker.setInitialTimeMillis(pref.getLong(ALERT_TIME_KEY, 0))
-        timePicker.setOnTimeSetOption(getString(R.string.set_time_button)) { _, m, s ->
-            onTimeAlertSet(
-                m,
-                s
-            )
-        }
+        timePicker.setOnTimeSetOption(getString(R.string.set_time_button)) { _, m, s -> onTimeAlertSet(m, s) }
         timePicker.setTitle(getString(R.string.timer_picker_title))
         timePicker.show(parentFragmentManager, "time_picker")
     }

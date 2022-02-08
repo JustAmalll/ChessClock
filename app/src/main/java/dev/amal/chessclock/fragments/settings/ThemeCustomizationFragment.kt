@@ -31,8 +31,7 @@ class ThemeCustomizationFragment : BaseFragment() {
         _binding = FragmentThemeCustomizationBinding.inflate(inflater, container, false)
 
         pref = requireActivity().getSharedPreferences(
-            SettingsFragment.PREFERENCES_NAME,
-            Context.MODE_PRIVATE
+            SettingsFragment.PREFERENCES_NAME, Context.MODE_PRIVATE
         )
 
         when (pref.getInt(THEME_ID, 2)) {

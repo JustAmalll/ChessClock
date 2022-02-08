@@ -22,7 +22,7 @@
         android:id="@+id/text_view_clock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/grey_800"
+        android:textColor="?textColorTop"
         android:textSize="80sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/text_view_hint"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tap_to_start_hint"
-        android:textColor="@color/grey_800"
+        android:textColor="?textColorTop"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,10 +50,11 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/initial_moves_text"
-        android:textColor="@color/grey_800"
+        android:textColor="?textColorTop"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:textColor="@color/grey_800" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
