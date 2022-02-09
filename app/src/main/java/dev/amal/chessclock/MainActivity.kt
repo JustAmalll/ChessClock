@@ -4,8 +4,9 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import dev.amal.chessclock.fragments.settings.SettingsFragment
+import dev.amal.chessclock.utils.SetTheme
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SetTheme {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    private fun setTheme() {
+    override fun setTheme() {
         val pref = getSharedPreferences(SettingsFragment.PREFERENCES_NAME, Context.MODE_PRIVATE)
         when (pref.getInt(SettingsFragment.THEME_ID, 2)) {
             1 -> setTheme(R.style.ThemeFirst)

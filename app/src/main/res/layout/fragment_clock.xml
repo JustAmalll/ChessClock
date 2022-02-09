@@ -18,11 +18,12 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/grey_800">
 
         <include
             android:id="@+id/clock1"
-            layout="@layout/clock" />
+            layout="@layout/clock_top" />
 
     </LinearLayout>
 
@@ -43,6 +44,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        tools:background="@color/grey_100"
         app:layout_constraintTop_toTopOf="@id/guideline">
 
         <include

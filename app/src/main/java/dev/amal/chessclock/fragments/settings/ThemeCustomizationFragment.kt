@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dev.amal.chessclock.BaseFragment
+import dev.amal.chessclock.MainActivity
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentThemeCustomizationBinding
 import dev.amal.chessclock.fragments.settings.SettingsFragment.Companion.THEME_ID
@@ -22,25 +23,47 @@ class ThemeCustomizationFragment : BaseFragment() {
 
     val viewModel: ThemeCustomizationViewModel by viewModels()
 
-    private lateinit var pref: SharedPreferences
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentThemeCustomizationBinding.inflate(inflater, container, false)
 
-        pref = requireActivity().getSharedPreferences(
+        val pref = requireActivity().getSharedPreferences(
             SettingsFragment.PREFERENCES_NAME, Context.MODE_PRIVATE
         )
 
         when (pref.getInt(THEME_ID, 2)) {
-            1 -> setFirstTheme()
-            2 -> setSecondTheme()
-            3 -> setThirdTheme()
-            4 -> setFourthTheme()
-            5 -> setFifthTheme()
-            6 -> setSixthTheme()
+            1 -> {
+                setFirstTheme()
+                binding.animatedCheckMark1.speed = 999f
+                binding.animatedCheckMark1.playAnimation()
+            }
+            2 -> {
+                setSecondTheme()
+                binding.animatedCheckMark2.speed = 999f
+                binding.animatedCheckMark2.playAnimation()
+            }
+            3 -> {
+                setThirdTheme()
+                binding.animatedCheckMark3.speed = 999f
+                binding.animatedCheckMark3.playAnimation()
+            }
+            4 -> {
+                setFourthTheme()
+                binding.animatedCheckMark4.speed = 999f
+                binding.animatedCheckMark4.playAnimation()
+            }
+            5 -> {
+                setFifthTheme()
+                binding.animatedCheckMark5.speed = 999f
+                binding.animatedCheckMark5.playAnimation()
+            }
+            6 -> {
+                setSixthTheme()
+                binding.animatedCheckMark6.speed = 999f
+                binding.animatedCheckMark6.playAnimation()
+            }
         }
 
         viewModel.currentThemeId.observe(viewLifecycleOwner) {
@@ -48,6 +71,7 @@ class ThemeCustomizationFragment : BaseFragment() {
                 when (it) {
                     1 -> {
                         animatedCheckMark1.visibility = View.VISIBLE
+                        animatedCheckMark1.speed = 4f
                         animatedCheckMark1.playAnimation()
                         animatedCheckMark2.visibility = View.GONE
                         animatedCheckMark3.visibility = View.GONE
@@ -58,6 +82,7 @@ class ThemeCustomizationFragment : BaseFragment() {
                     2 -> {
                         animatedCheckMark1.visibility = View.GONE
                         animatedCheckMark2.visibility = View.VISIBLE
+                        animatedCheckMark2.speed = 4f
                         animatedCheckMark2.playAnimation()
                         animatedCheckMark3.visibility = View.GONE
                         animatedCheckMark4.visibility = View.GONE
@@ -68,6 +93,7 @@ class ThemeCustomizationFragment : BaseFragment() {
                         animatedCheckMark1.visibility = View.GONE
                         animatedCheckMark2.visibility = View.GONE
                         animatedCheckMark3.visibility = View.VISIBLE
+                        animatedCheckMark3.speed = 4f
                         animatedCheckMark3.playAnimation()
                         animatedCheckMark4.visibility = View.GONE
                         animatedCheckMark5.visibility = View.GONE
@@ -78,6 +104,7 @@ class ThemeCustomizationFragment : BaseFragment() {
                         animatedCheckMark2.visibility = View.GONE
                         animatedCheckMark3.visibility = View.GONE
                         animatedCheckMark4.visibility = View.VISIBLE
+                        animatedCheckMark4.speed = 4f
                         animatedCheckMark4.playAnimation()
                         animatedCheckMark5.visibility = View.GONE
                         animatedCheckMark6.visibility = View.GONE
@@ -88,6 +115,7 @@ class ThemeCustomizationFragment : BaseFragment() {
                         animatedCheckMark3.visibility = View.GONE
                         animatedCheckMark4.visibility = View.GONE
                         animatedCheckMark5.visibility = View.VISIBLE
+                        animatedCheckMark5.speed = 4f
                         animatedCheckMark5.playAnimation()
                         animatedCheckMark6.visibility = View.GONE
                     }
@@ -98,6 +126,7 @@ class ThemeCustomizationFragment : BaseFragment() {
                         animatedCheckMark4.visibility = View.GONE
                         animatedCheckMark5.visibility = View.GONE
                         animatedCheckMark6.visibility = View.VISIBLE
+                        animatedCheckMark6.speed = 4f
                         animatedCheckMark6.playAnimation()
                     }
                 }
@@ -108,6 +137,7 @@ class ThemeCustomizationFragment : BaseFragment() {
             viewModel.currentThemeId.observe(viewLifecycleOwner) {
                 pref.edit().putInt(THEME_ID, it).apply()
             }
+            (activity as MainActivity).setTheme()
             findNavController().navigate(R.id.action_themeCustomizationFragment_to_settingsFragment)
         }
 
@@ -147,65 +177,60 @@ class ThemeCustomizationFragment : BaseFragment() {
     private fun setFirstTheme() {
         binding.apply {
             applyButton.setBgColor(R.color.theme_one_main)
-            clock1ContainerPreview.setBgColor(R.color.theme_one_main)
-            clock2ContainerPreview.setBgColor(R.color.theme_one_secondary)
-            clock2TextViewPreview.setTextViewColor()
-            clock1TextViewPreview.setTextViewColor()
-            animatedCheckMark1.playAnimation()
+            clockTopContainerPreview.setBgColor(R.color.theme_one_main)
+            clockBottomContainerPreview.setBgColor(R.color.theme_one_secondary)
+            clockTopTextViewPreview.setTextViewColor()
+            clockBottomTextViewPreview.setTextViewColor()
         }
     }
 
     private fun setSecondTheme() {
         binding.apply {
             applyButton.setBgColor(R.color.theme_two_main)
-            clock1ContainerPreview.setBgColor(R.color.theme_two_main)
-            clock2ContainerPreview.setBackgroundColor(Color.WHITE)
-            clock2TextViewPreview.setTextViewColor(R.color.theme_two_main)
-            animatedCheckMark2.playAnimation()
+            clockTopContainerPreview.setBgColor(R.color.theme_two_main)
+            clockBottomContainerPreview.setBackgroundColor(Color.WHITE)
+            clockTopTextViewPreview.setTextViewColor()
+            clockBottomTextViewPreview.setTextViewColor(R.color.theme_two_main)
         }
     }
 
     private fun setThirdTheme() {
         binding.apply {
             applyButton.setBgColor(R.color.theme_three_main)
-            clock1ContainerPreview.setBgColor(R.color.theme_three_main)
-            clock2ContainerPreview.setBgColor(R.color.theme_three_secondary)
-            clock2TextViewPreview.setTextViewColor(R.color.theme_two_main)
-            clock1TextViewPreview.setTextViewColor()
-            animatedCheckMark3.playAnimation()
+            clockTopContainerPreview.setBgColor(R.color.theme_three_main)
+            clockBottomContainerPreview.setBgColor(R.color.theme_three_secondary)
+            clockTopTextViewPreview.setTextViewColor()
+            clockBottomTextViewPreview.setTextViewColor(R.color.theme_two_main)
         }
     }
 
     private fun setFourthTheme() {
         binding.apply {
             applyButton.setBgColor(R.color.theme_four_main)
-            clock1ContainerPreview.setBgColor(R.color.theme_four_main)
-            clock2ContainerPreview.setBgColor(R.color.theme_four_secondary)
-            clock2TextViewPreview.setTextViewColor()
-            clock1TextViewPreview.setTextViewColor()
-            animatedCheckMark4.playAnimation()
+            clockTopContainerPreview.setBgColor(R.color.theme_four_main)
+            clockBottomContainerPreview.setBgColor(R.color.theme_four_secondary)
+            clockTopTextViewPreview.setTextViewColor()
+            clockBottomTextViewPreview.setTextViewColor()
         }
     }
 
     private fun setFifthTheme() {
         binding.apply {
             applyButton.setBgColor(R.color.theme_five_main)
-            clock1ContainerPreview.setBgColor(R.color.theme_five_main)
-            clock2ContainerPreview.setBgColor(R.color.theme_five_secondary)
-            clock2TextViewPreview.setTextViewColor()
-            clock1TextViewPreview.setTextViewColor()
-            animatedCheckMark5.playAnimation()
+            clockTopContainerPreview.setBgColor(R.color.theme_five_main)
+            clockBottomContainerPreview.setBgColor(R.color.theme_five_secondary)
+            clockTopTextViewPreview.setTextViewColor()
+            clockBottomTextViewPreview.setTextViewColor()
         }
     }
 
     private fun setSixthTheme() {
         binding.apply {
             applyButton.setBgColor(R.color.theme_six_main)
-            clock1ContainerPreview.setBgColor(R.color.theme_six_main)
-            clock2ContainerPreview.setBgColor(R.color.theme_six_secondary)
-            clock2TextViewPreview.setTextViewColor(R.color.theme_six_main)
-            clock1TextViewPreview.setTextViewColor(R.color.theme_six_secondary)
-            animatedCheckMark6.playAnimation()
+            clockTopContainerPreview.setBgColor(R.color.theme_six_main)
+            clockBottomContainerPreview.setBgColor(R.color.theme_six_secondary)
+            clockTopTextViewPreview.setTextViewColor(R.color.theme_six_secondary)
+            clockBottomTextViewPreview.setTextViewColor(R.color.theme_six_main)
         }
     }
 

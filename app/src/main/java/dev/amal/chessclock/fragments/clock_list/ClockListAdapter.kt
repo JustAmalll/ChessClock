@@ -29,20 +29,18 @@ class ClockListAdapter(
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent, clockItemListener)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+        ViewHolder.from(parent, clockItemListener)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(data[position], currentClockId)
     }
 
-    override fun getItemCount(): Int {
-        return data.size
-    }
+    override fun getItemCount(): Int = data.size
 
-    class ViewHolder(itemView: View, private val clockItemListener: ClockItemListener) :
-        RecyclerView.ViewHolder(itemView), View.OnCreateContextMenuListener {
+    class ViewHolder(
+        itemView: View, private val clockItemListener: ClockItemListener
+    ) : RecyclerView.ViewHolder(itemView), View.OnCreateContextMenuListener {
 
         private val cardView: MaterialCardView = itemView.findViewById(R.id.card_view)
         private val clockThumbnail: ImageView = itemView.findViewById(R.id.clock_item_thumbnail)
@@ -94,19 +92,13 @@ class ClockListAdapter(
 
             if (currentClockId == clock.id) {
                 cardView.setCardBackgroundColor(
-                    ContextCompat.getColor(
-                        itemView.context,
-                        R.color.grey_800
-                    )
+                    ContextCompat.getColor(itemView.context, R.color.grey_800)
                 )
                 gameType.setTextColor(ContextCompat.getColor(itemView.context, R.color.grey_50))
                 gameTimes.setTextColor(ContextCompat.getColor(itemView.context, R.color.grey_50))
             } else {
                 cardView.setCardBackgroundColor(
-                    ContextCompat.getColor(
-                        itemView.context,
-                        R.color.grey_100
-                    )
+                    ContextCompat.getColor(itemView.context, R.color.grey_100)
                 )
                 gameType.setTextColor(ContextCompat.getColor(itemView.context, R.color.grey_800))
                 gameTimes.setTextColor(ContextCompat.getColor(itemView.context, R.color.grey_800))

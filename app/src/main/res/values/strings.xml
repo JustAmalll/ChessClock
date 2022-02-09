@@ -17,6 +17,7 @@
     <string name="clock_list_appbar_description">Clock list</string>
     <string name="settings_appbar_title">Settings</string>
     <string name="settings_app_bar_description">Settings</string>
+    <string name="themes_app_bar_description">Themes</string>
     <string name="back_icon_description">Back</string>
     <string name="exit_icon_description">Exit</string>
     <string name="sound_settings_icon_description">Go to settings</string>

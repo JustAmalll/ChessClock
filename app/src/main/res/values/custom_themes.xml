@@ -12,11 +12,11 @@
     </style>
 
     <style name="ThemeSecond">
-        <item name="textColorTop">@color/white</item>
+        <item name="textColorTop">@color/theme_two_secondary</item>
         <item name="textColorBottom">@color/theme_two_main</item>
-        <item name="textColorTimeControl">@color/white</item>
+        <item name="textColorTimeControl">@color/theme_two_secondary</item>
         <item name="backgroundColorTop">@color/theme_two_main</item>
-        <item name="backgroundColorBottom">@color/white</item>
+        <item name="backgroundColorBottom">@color/theme_two_secondary</item>
         <item name="switchTrackTint">@color/switch_track_theme_second</item>
         <item name="switchThumbTint">@color/switch_thumb_theme_second</item>
     </style>

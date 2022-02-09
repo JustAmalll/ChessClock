@@ -20,6 +20,7 @@ import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dev.amal.chessclock.BaseFragment
+import dev.amal.chessclock.MainActivity
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentClockBinding
 import dev.amal.chessclock.fragments.settings.SettingsFragment
@@ -29,7 +30,9 @@ class ClockFragment : BaseFragment() {
 
     private var _binding: FragmentClockBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var viewModel: ClockViewModel
+
     private lateinit var clockSound: MediaPlayer
     private lateinit var timeUpSound: MediaPlayer
 
@@ -39,7 +42,13 @@ class ClockFragment : BaseFragment() {
     ): View {
         _binding = FragmentClockBinding.inflate(inflater, container, false)
 
-        (activity as AppCompatActivity).supportActionBar?.hide()
+        val pref = requireActivity().getSharedPreferences(
+            SettingsFragment.PREFERENCES_NAME, Context.MODE_PRIVATE
+        )
+
+        when (pref.getInt(SettingsFragment.THEME_ID, 2)) {
+
+        }
 
         clockSound = MediaPlayer.create(requireContext(), R.raw.chess_clock_sound)
         timeUpSound = MediaPlayer.create(context, R.raw.time_up_sound)
@@ -142,9 +151,7 @@ class ClockFragment : BaseFragment() {
         }
 
         viewModel.playTimeUpSound.observe(viewLifecycleOwner) {
-            if (it == true) {
-                playTimeUpSound()
-            }
+            if (it == true) playTimeUpSound()
         }
 
         // UI actions

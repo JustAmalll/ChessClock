@@ -42,6 +42,7 @@ class ClockListFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(ClockListViewModel::class.java)
 
         val adapter = ClockListAdapter(currentClockId, getClockItemListener())
+        binding.clockList.adapter = adapter
 
         // OBSERVERS...
         viewModel.clocks.observe(viewLifecycleOwner) {
@@ -53,9 +54,6 @@ class ClockListFragment : Fragment() {
             adapter.currentClockId = it
             adapter.notifyDataSetChanged()
         }
-        // ..
-
-        binding.clockList.adapter = adapter
 
         // UI ACTIONS
         binding.toolbar.setNavigationOnClickListener {
@@ -65,7 +63,8 @@ class ClockListFragment : Fragment() {
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.sound_settings -> {
-                    val action = ClockListFragmentDirections.actionClockListFragmentToSettingsFragment()
+                    val action =
+                        ClockListFragmentDirections.actionClockListFragmentToSettingsFragment()
                     findNavController().navigate(action)
                     true
                 }
@@ -81,28 +80,25 @@ class ClockListFragment : Fragment() {
         return binding.root
     }
 
-    private fun getClockItemListener (): ClockItemListener {
-        return object : ClockItemListener{
-            override fun onClickItem(clockId: Long) {
-                viewModel.setCurrentClockId(clockId)
-            }
+    private fun getClockItemListener(): ClockItemListener = object : ClockItemListener {
 
-            override fun onEditItem(clockId: Long) {
-                val action = ClockListFragmentDirections.actionClockListFragmentToTimeControlFragment()
-                action.clockId = clockId
-                action.editOption = true
-                findNavController().navigate(action)
-            }
+        override fun onClickItem(clockId: Long) {
+            viewModel.setCurrentClockId(clockId)
+            findNavController().navigateUp()
+        }
 
-            override fun onRemoveItem(clockId: Long) {
-                val removeItem = viewModel.onRemoveClick()
-                if (removeItem) {
-                    showConfirmDeleteDialog(clockId)
-                } else {
-                    showSnackBarOneClock()
-                }
-            }
+        override fun onEditItem(clockId: Long) {
+            val action =
+                ClockListFragmentDirections.actionClockListFragmentToTimeControlFragment()
+            action.clockId = clockId
+            action.editOption = true
+            findNavController().navigate(action)
+        }
 
+        override fun onRemoveItem(clockId: Long) {
+            val removeItem = viewModel.onRemoveClick()
+            if (removeItem) showConfirmDeleteDialog(clockId)
+            else showSnackBarOneClock()
         }
     }
 

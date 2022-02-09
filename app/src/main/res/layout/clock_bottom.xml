@@ -30,7 +30,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:text="05:00" />
+        tools:text="05:00"
+        tools:textColor="@color/grey_800" />
 
     <TextView
         android:id="@+id/text_view_hint"
@@ -41,6 +42,7 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        tools:textColor="@color/grey_800"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_clock" />
 
