@@ -32,10 +32,4 @@
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.Switch</item>
     </style>
 
-    <style name="ThemeOverlay.App.Switch.First" parent="">
-        <item name="switchMinWidth">56dp</item>
-        <item name="colorOnSurface">@color/theme_one_main</item>
-        <item name="colorSecondary">@color/theme_one_secondary</item>
-    </style>
-
 </resources>

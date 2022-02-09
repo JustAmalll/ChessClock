@@ -4,43 +4,61 @@
     <style name="ThemeFirst">
         <item name="textColorTop">@color/white</item>
         <item name="textColorBottom">@color/white</item>
+        <item name="textColorTimeControl">@color/white</item>
         <item name="backgroundColorTop">@color/theme_one_main</item>
         <item name="backgroundColorBottom">@color/theme_one_secondary</item>
+        <item name="switchTrackTint">@color/switch_track_theme_first</item>
+        <item name="switchThumbTint">@color/switch_thumb_theme_first</item>
     </style>
 
     <style name="ThemeSecond">
         <item name="textColorTop">@color/white</item>
         <item name="textColorBottom">@color/theme_two_main</item>
+        <item name="textColorTimeControl">@color/white</item>
         <item name="backgroundColorTop">@color/theme_two_main</item>
         <item name="backgroundColorBottom">@color/white</item>
+        <item name="switchTrackTint">@color/switch_track_theme_second</item>
+        <item name="switchThumbTint">@color/switch_thumb_theme_second</item>
     </style>
 
     <style name="ThemeThird">
         <item name="textColorTop">@color/white</item>
         <item name="textColorBottom">@color/theme_two_main</item>
+        <item name="textColorTimeControl">@color/white</item>
         <item name="backgroundColorTop">@color/theme_three_main</item>
         <item name="backgroundColorBottom">@color/theme_three_secondary</item>
+        <item name="switchTrackTint">@color/switch_track_theme_third</item>
+        <item name="switchThumbTint">@color/switch_thumb_theme_third</item>
     </style>
 
     <style name="ThemeFourth">
         <item name="textColorTop">@color/white</item>
         <item name="textColorBottom">@color/white</item>
+        <item name="textColorTimeControl">@color/white</item>
         <item name="backgroundColorTop">@color/theme_four_main</item>
         <item name="backgroundColorBottom">@color/theme_four_secondary</item>
+        <item name="switchTrackTint">@color/switch_track_theme_fourth</item>
+        <item name="switchThumbTint">@color/switch_thumb_theme_fourth</item>
     </style>
 
     <style name="ThemeFifth">
         <item name="textColorTop">@color/white</item>
         <item name="textColorBottom">@color/white</item>
+        <item name="textColorTimeControl">@color/white</item>
         <item name="backgroundColorTop">@color/theme_five_main</item>
         <item name="backgroundColorBottom">@color/theme_five_secondary</item>
+        <item name="switchTrackTint">@color/switch_track_theme_fifth</item>
+        <item name="switchThumbTint">@color/switch_thumb_theme_fifth</item>
     </style>
 
     <style name="ThemeSixth">
         <item name="textColorTop">@color/theme_six_secondary</item>
         <item name="textColorBottom">@color/theme_six_main</item>
+        <item name="textColorTimeControl">@color/theme_six_text_color</item>
         <item name="backgroundColorTop">@color/theme_six_main</item>
         <item name="backgroundColorBottom">@color/theme_six_secondary</item>
+        <item name="switchTrackTint">@color/switch_track_theme_sixth</item>
+        <item name="switchThumbTint">@color/switch_thumb_theme_sixth</item>
     </style>
 
 </resources>

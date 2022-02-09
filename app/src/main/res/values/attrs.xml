@@ -3,7 +3,10 @@
     <declare-styleable name="themes">
         <attr name="textColorTop" format="reference"/>
         <attr name="textColorBottom" format="reference"/>
+        <attr name="textColorTimeControl" format="reference"/>
         <attr name="backgroundColorTop" format="reference" />
         <attr name="backgroundColorBottom" format="reference" />
+        <attr name="switchTrackTint" format="reference" />
+        <attr name="switchThumbTint" format="reference" />
     </declare-styleable>
 </resources>

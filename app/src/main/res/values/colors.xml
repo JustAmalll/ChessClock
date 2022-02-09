@@ -24,6 +24,7 @@
     <color name="design_default_color_error">#B00020</color>
 
     <color name="theme_one_main">#f5907c</color>
+    <color name="theme_one_track_tint">#F8C2BF</color>
     <color name="theme_one_secondary">#2e3a52</color>
 
     <color name="theme_two_main">#3B3B3B</color>
@@ -39,5 +40,5 @@
 
     <color name="theme_six_main">#FFDC21</color>
     <color name="theme_six_secondary">#313131</color>
-
+    <color name="theme_six_text_color">#616161</color>
 </resources>
