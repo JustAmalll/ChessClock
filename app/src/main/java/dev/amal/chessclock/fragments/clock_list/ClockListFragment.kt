@@ -45,9 +45,7 @@ class ClockListFragment : Fragment() {
         binding.clockList.adapter = adapter
 
         // OBSERVERS...
-        viewModel.clocks.observe(viewLifecycleOwner) {
-            adapter.data = it
-        }
+        viewModel.clocks.observe(viewLifecycleOwner) { adapter.data = it }
 
         viewModel.currentClockId.observe(viewLifecycleOwner) {
             preferences.edit().putLong(CURRENT_CLOCK_KEY, it).apply()
@@ -110,9 +108,7 @@ class ClockListFragment : Fragment() {
         val dialog = MaterialAlertDialogBuilder(requireContext())
         dialog.setTitle(R.string.delete_clock_title)
         dialog.setMessage(R.string.delete_clock_message)
-        dialog.setPositiveButton(R.string.delete_clock_confirm_button) { _, _ ->
-            viewModel.removeItem(clockId)
-        }
+        dialog.setPositiveButton(R.string.delete_clock_confirm_button) { _, _ -> viewModel.removeItem(clockId) }
         dialog.setNegativeButton(R.string.cancel_button) { _, _ -> }
         dialog.show()
     }

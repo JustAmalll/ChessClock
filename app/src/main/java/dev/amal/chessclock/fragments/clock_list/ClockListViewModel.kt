@@ -37,5 +37,4 @@ class ClockListViewModel(application: Application, clockId: Long) : ViewModel() 
             }
         }
     }
-
 }

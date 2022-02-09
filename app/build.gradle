@@ -58,6 +58,4 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
 
     implementation 'com.airbnb.android:lottie:4.2.2'
-
-    implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
 }

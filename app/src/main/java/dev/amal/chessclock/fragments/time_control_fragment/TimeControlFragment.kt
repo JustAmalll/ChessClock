@@ -133,16 +133,12 @@ class TimeControlFragment : Fragment() {
     }
 
     private fun setAppbarTitle(editOption: Boolean) {
-        if (editOption) {
-            binding.toolbar.title = getString(R.string.app_bar_edit_title)
-        } else {
-            binding.toolbar.title = getString(R.string.app_bar_create_title)
-        }
+        if (editOption) binding.toolbar.title = getString(R.string.app_bar_edit_title)
+        else binding.toolbar.title = getString(R.string.app_bar_create_title)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }

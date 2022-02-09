@@ -53,15 +53,13 @@ class ChessUtils {
 
 class DataUtil {
     companion object {
-        fun getDefaultClocks(): List<ChessClock> {
-            return arrayListOf(
-                ChessClock(firstPlayerTime = ONE_MINUTE, secondPlayerTime = ONE_MINUTE),
-                ChessClock(firstPlayerTime = 2 * ONE_MINUTE, secondPlayerTime = 2 * ONE_MINUTE),
-                ChessClock(firstPlayerTime = 5 * ONE_MINUTE, secondPlayerTime = 5 * ONE_MINUTE),
-                ChessClock(firstPlayerTime = 10 * ONE_MINUTE, secondPlayerTime = 10 * ONE_MINUTE),
-                ChessClock(firstPlayerTime = 15 * ONE_MINUTE, secondPlayerTime = 15 * ONE_MINUTE),
-                ChessClock(firstPlayerTime = 60 * ONE_MINUTE, secondPlayerTime = 60 * ONE_MINUTE)
-            )
-        }
+        fun getDefaultClocks(): List<ChessClock> = arrayListOf(
+            ChessClock(firstPlayerTime = ONE_MINUTE, secondPlayerTime = ONE_MINUTE),
+            ChessClock(firstPlayerTime = 2 * ONE_MINUTE, secondPlayerTime = 2 * ONE_MINUTE),
+            ChessClock(firstPlayerTime = 5 * ONE_MINUTE, secondPlayerTime = 5 * ONE_MINUTE),
+            ChessClock(firstPlayerTime = 10 * ONE_MINUTE, secondPlayerTime = 10 * ONE_MINUTE),
+            ChessClock(firstPlayerTime = 15 * ONE_MINUTE, secondPlayerTime = 15 * ONE_MINUTE),
+            ChessClock(firstPlayerTime = 60 * ONE_MINUTE, secondPlayerTime = 60 * ONE_MINUTE)
+        )
     }
 }

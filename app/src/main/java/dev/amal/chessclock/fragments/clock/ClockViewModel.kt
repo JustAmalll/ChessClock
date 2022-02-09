@@ -147,17 +147,16 @@ class ClockViewModel(application: Application) : ViewModel() {
         setAlertTimeChecks()
     }
 
-    private fun updateClock () {
+    private fun updateClock() {
         val clockIdUpdated = pref.getLong(CURRENT_CLOCK_KEY, -1)
         if (clockIdUpdated != clockId) {
             clockId = clockIdUpdated
-            if (timer1.state == NOT_STARTED && timer2.state == NOT_STARTED) {
+            if (timer1.state == NOT_STARTED && timer2.state == NOT_STARTED)
                 initializeCurrentClock()
-            }
         }
     }
 
-    private fun setPlayerMovesInitialValues () {
+    private fun setPlayerMovesInitialValues() {
         _playerOneMoves.value = 0
         _playerTwoMoves.value = 0
     }
@@ -167,7 +166,7 @@ class ClockViewModel(application: Application) : ViewModel() {
         _showHintTwo.value = true
     }
 
-    private fun setShowAlertTimeInitialValues () {
+    private fun setShowAlertTimeInitialValues() {
         _showAlertTimeOne.value = false
         _showAlertTimeTwo.value = false
     }
@@ -193,7 +192,6 @@ class ClockViewModel(application: Application) : ViewModel() {
             override fun onFinishTimer() {
                 onTimeUpPlayerOne()
             }
-
         }
     }
 
@@ -209,7 +207,6 @@ class ClockViewModel(application: Application) : ViewModel() {
             override fun onFinishTimer() {
                 onTimeUpPlayerTwo()
             }
-
         }
     }
 
@@ -229,12 +226,12 @@ class ClockViewModel(application: Application) : ViewModel() {
         playTimeUpSound()
     }
 
-    private fun playTimeUpSound () {
+    private fun playTimeUpSound() {
         _playTimeUpSound.value = true
         _playTimeUpSound.value = false
     }
 
-    private fun vibrate () {
+    private fun vibrate() {
         if (vibrationActive) {
             _vibrate.value = true
             _vibrate.value = false
@@ -350,8 +347,7 @@ class ClockViewModel(application: Application) : ViewModel() {
                         _showAlertTimeOne.value = false
                     }
                 }
-            }
-            else {
+            } else {
                 timeAlertCheck1 = {}
             }
             if (timeAlert < clock?.secondPlayerTime ?: ONE_MINUTE * 5) {
@@ -363,8 +359,7 @@ class ClockViewModel(application: Application) : ViewModel() {
                         _showAlertTimeTwo.value = false
                     }
                 }
-            }
-            else {
+            } else {
                 timeAlertCheck2 = {}
             }
         } else {

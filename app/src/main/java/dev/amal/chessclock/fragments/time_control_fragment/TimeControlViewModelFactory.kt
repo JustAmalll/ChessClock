@@ -12,9 +12,8 @@ class TimeControlViewModelFactory(
 ) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(TimeControlViewModel::class.java)) {
-            return TimeControlViewModel(application, clockId, editOption) as T
-        }
+        if (modelClass.isAssignableFrom(TimeControlViewModel::class.java))
+            TimeControlViewModel(application, clockId, editOption) as T
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

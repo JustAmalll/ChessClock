@@ -1,7 +1,6 @@
 package dev.amal.chessclock.fragments.clock
 
 import android.content.Context
-import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
@@ -10,8 +9,8 @@ import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -19,14 +18,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import dev.amal.chessclock.BaseFragment
-import dev.amal.chessclock.MainActivity
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentClockBinding
 import dev.amal.chessclock.fragments.settings.SettingsFragment
 
 
-class ClockFragment : BaseFragment() {
+class ClockFragment : Fragment() {
 
     private var _binding: FragmentClockBinding? = null
     private val binding get() = _binding!!
@@ -41,14 +38,6 @@ class ClockFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentClockBinding.inflate(inflater, container, false)
-
-        val pref = requireActivity().getSharedPreferences(
-            SettingsFragment.PREFERENCES_NAME, Context.MODE_PRIVATE
-        )
-
-        when (pref.getInt(SettingsFragment.THEME_ID, 2)) {
-
-        }
 
         clockSound = MediaPlayer.create(requireContext(), R.raw.chess_clock_sound)
         timeUpSound = MediaPlayer.create(context, R.raw.time_up_sound)

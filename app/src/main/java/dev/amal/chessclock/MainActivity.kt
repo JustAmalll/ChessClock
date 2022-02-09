@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import dev.amal.chessclock.fragments.settings.SettingsFragment
-import dev.amal.chessclock.utils.SetTheme
 
 class MainActivity : AppCompatActivity(), SetTheme {
 
@@ -25,4 +24,8 @@ class MainActivity : AppCompatActivity(), SetTheme {
             6 -> setTheme(R.style.ThemeSixth)
         }
     }
+}
+
+interface SetTheme {
+    fun setTheme()
 }

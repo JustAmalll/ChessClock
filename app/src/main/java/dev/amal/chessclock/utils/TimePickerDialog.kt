@@ -52,7 +52,7 @@ class TimePickerDialog : DialogFragment() {
      * Min value for the Hour picker.
      * Default value is 0.
      */
-    var minValueHour: Int = 0
+    private var minValueHour: Int = 0
     var minValueMinute: Int = 0
     var minValueSecond: Int = 0
 
@@ -65,27 +65,26 @@ class TimePickerDialog : DialogFragment() {
 
     private var title: String? = null
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return activity?.let {
+    override fun onCreateDialog(
+        savedInstanceState: Bundle?
+    ): Dialog = activity?.let {
 
-            timePickerLayout = requireActivity()
-                .layoutInflater.inflate(R.layout.time_picker_content, null)
+        timePickerLayout = requireActivity()
+            .layoutInflater.inflate(R.layout.time_picker_content, null)
 
-            setupTimePickerLayout()
+        setupTimePickerLayout()
 
-            MaterialAlertDialogBuilder(it)
-                .setView(timePickerLayout)
-                .setTitle(title)
-                .setPositiveButton(timeSetText) { _, _ ->
-                    var hour = hourPicker.value
-                    if (!includeHours) hour = 0
-                    onTimeSetOption(hour, minPicker.value, secPicker.value)
-                }
-                .setNegativeButton(getString(R.string.cancel_button)) { _, _ ->
-                    onCancelOption
-                }.create()
-        } ?: throw IllegalStateException("Activity cannot be null")
-    }
+        MaterialAlertDialogBuilder(it)
+            .setView(timePickerLayout)
+            .setTitle(title)
+            .setPositiveButton(timeSetText) { _, _ ->
+                var hour = hourPicker.value
+                if (!includeHours) hour = 0
+                onTimeSetOption(hour, minPicker.value, secPicker.value)
+            }
+            .setNegativeButton(getString(R.string.cancel_button)) { _, _ -> onCancelOption }
+            .create()
+    } ?: throw IllegalStateException("Activity cannot be null")
 
     /**
      * Set the title displayed in the Dialog
@@ -134,9 +133,8 @@ class TimePickerDialog : DialogFragment() {
         setupInitialValues()
 
         if (!includeHours) {
-            timePickerLayout.findViewById<LinearLayout>(
-                R.id.hours_container
-            ).visibility = View.GONE
+            timePickerLayout.findViewById<LinearLayout>(R.id.hours_container)
+                .visibility = View.GONE
         }
     }
 

@@ -46,11 +46,7 @@ class TimeControlViewModel(
     }
 
     private fun loadClock() {
-        if (editOption) {
-            loadClockFromDatabase()
-        } else {
-            loadDefaultClock()
-        }
+        if (editOption) loadClockFromDatabase() else loadDefaultClock()
     }
 
     private fun loadClockFromDatabase() {
@@ -63,9 +59,8 @@ class TimeControlViewModel(
         _chessClock.value = getDefaultClock()
     }
 
-    private fun getDefaultClock(): ChessClock {
-        return ChessClock(firstPlayerTime = 5 * ONE_MINUTE, secondPlayerTime = 5 * ONE_MINUTE)
-    }
+    private fun getDefaultClock(): ChessClock =
+        ChessClock(firstPlayerTime = 5 * ONE_MINUTE, secondPlayerTime = 5 * ONE_MINUTE)
 
     fun onNavigationClick() {
         _closeFragment.value = true
@@ -76,27 +71,19 @@ class TimeControlViewModel(
     }
 
     fun onSaveOptionMenuClick() {
-        if (editOption) {
-            updateClock()
-        } else {
-            createClock()
-        }
+        if (editOption) updateClock() else createClock()
     }
 
     private fun updateClock() {
         viewModelScope.launch {
-            chessClock.value?.let {
-                database.update(it)
-            }
+            chessClock.value?.let { database.update(it) }
             _closeFragment.value = true
         }
     }
 
     private fun createClock() {
         viewModelScope.launch {
-            chessClock.value?.let {
-                database.insert(it)
-            }
+            chessClock.value?.let { database.insert(it) }
             _closeFragment.value = true
         }
     }
@@ -105,9 +92,7 @@ class TimeControlViewModel(
         val timeMillis = seconds * ONE_SECOND + minutes * ONE_MINUTE + hours * 60 * ONE_MINUTE
         val clockUpdated = _chessClock.value
         clockUpdated?.firstPlayerTime = timeMillis
-        if (sameValueChecked) {
-            clockUpdated?.secondPlayerTime = timeMillis
-        }
+        if (sameValueChecked) clockUpdated?.secondPlayerTime = timeMillis
         _chessClock.value = clockUpdated!!
     }
 
@@ -115,9 +100,7 @@ class TimeControlViewModel(
         val timeMillis = seconds * ONE_SECOND + minutes * ONE_MINUTE + hours * 60 * ONE_MINUTE
         val clockUpdated = _chessClock.value
         clockUpdated?.secondPlayerTime = timeMillis
-        if (clockUpdated?.firstPlayerTime != timeMillis) {
-            _sameValueSwitch.value = false
-        }
+        if (clockUpdated?.firstPlayerTime != timeMillis) _sameValueSwitch.value = false
         _chessClock.value = clockUpdated!!
     }
 
@@ -136,5 +119,4 @@ class TimeControlViewModel(
         clockUpdated?.increment = timeMillis
         _chessClock.value = clockUpdated!!
     }
-
 }

@@ -22,9 +22,7 @@ abstract class ChessClockDatabase : RoomDatabase() {
             INSTANCE?.let { database ->
                 scope.launch {
                     val chessClockDao = database.chessClockDao
-                    if (chessClockDao.count() == 0) {
-                        prePopulateDatabase(chessClockDao)
-                    }
+                    if (chessClockDao.count() == 0) prePopulateDatabase(chessClockDao)
                 }
             }
         }

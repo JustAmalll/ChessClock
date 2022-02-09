@@ -20,16 +20,17 @@ abstract class CountDownTimer(millisInFuture: Long, private var countDownInterva
         timer = initializeTimer(millisInFuture, countDownInterval)
     }
 
-    private fun initializeTimer(millisInFuture: Long, countDownInterval: Long): CountDownTimer {
-        return object : CountDownTimer(millisInFuture, countDownInterval) {
-            override fun onTick(millisUntilFinished: Long) {
-                onTickTimer(millisUntilFinished)
-                timeLeft = millisUntilFinished
-            }
+    private fun initializeTimer(
+        millisInFuture: Long, countDownInterval: Long
+    ): CountDownTimer = object : CountDownTimer(millisInFuture, countDownInterval) {
 
-            override fun onFinish() {
-                onFinishTimer()
-            }
+        override fun onTick(millisUntilFinished: Long) {
+            onTickTimer(millisUntilFinished)
+            timeLeft = millisUntilFinished
+        }
+
+        override fun onFinish() {
+            onFinishTimer()
         }
     }
 

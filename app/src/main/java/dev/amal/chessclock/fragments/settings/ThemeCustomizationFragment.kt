@@ -1,22 +1,24 @@
 package dev.amal.chessclock.fragments.settings
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import dev.amal.chessclock.BaseFragment
 import dev.amal.chessclock.MainActivity
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentThemeCustomizationBinding
 import dev.amal.chessclock.fragments.settings.SettingsFragment.Companion.THEME_ID
 
 
-class ThemeCustomizationFragment : BaseFragment() {
+class ThemeCustomizationFragment : Fragment() {
 
     private var _binding: FragmentThemeCustomizationBinding? = null
     private val binding get() = _binding!!
@@ -232,6 +234,14 @@ class ThemeCustomizationFragment : BaseFragment() {
             clockTopTextViewPreview.setTextViewColor(R.color.theme_six_secondary)
             clockBottomTextViewPreview.setTextViewColor(R.color.theme_six_main)
         }
+    }
+
+    private fun View.setBgColor(@ColorRes color: Int) {
+        this.setBackgroundColor(ContextCompat.getColor(requireContext(), color))
+    }
+
+    private fun TextView.setTextViewColor(@ColorRes color: Int = R.color.white) {
+        this.setTextColor(ContextCompat.getColor(requireContext(), color))
     }
 
     override fun onDestroyView() {
