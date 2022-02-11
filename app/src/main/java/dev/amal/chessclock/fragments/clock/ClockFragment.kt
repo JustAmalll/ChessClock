@@ -6,11 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -20,24 +16,20 @@ import androidx.transition.TransitionManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentClockBinding
-import dev.amal.chessclock.fragments.settings.SettingsFragment
+import dev.amal.chessclock.utils.BaseFragment
 
 
-class ClockFragment : Fragment() {
-
-    private var _binding: FragmentClockBinding? = null
-    private val binding get() = _binding!!
+class ClockFragment : BaseFragment<FragmentClockBinding>(
+    FragmentClockBinding::inflate
+) {
 
     private lateinit var viewModel: ClockViewModel
 
     private lateinit var clockSound: MediaPlayer
     private lateinit var timeUpSound: MediaPlayer
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentClockBinding.inflate(inflater, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         clockSound = MediaPlayer.create(requireContext(), R.raw.chess_clock_sound)
         timeUpSound = MediaPlayer.create(context, R.raw.time_up_sound)
@@ -73,24 +65,24 @@ class ClockFragment : Fragment() {
         }
 
         viewModel.showHintOne.observe(viewLifecycleOwner) {
-            if (it == true) binding.clock1.textViewHint.visibility = View.VISIBLE
-            else binding.clock1.textViewHint.visibility = View.INVISIBLE
+            if (it == true) binding.clock1.textViewHint.visible()
+            else binding.clock1.textViewHint.gone()
         }
 
         viewModel.showHintTwo.observe(viewLifecycleOwner) {
-            if (it == true) binding.clock2.textViewHint.visibility = View.VISIBLE
-            else binding.clock2.textViewHint.visibility = View.INVISIBLE
+            if (it == true) binding.clock2.textViewHint.visible()
+            else binding.clock2.textViewHint.gone()
         }
 
         viewModel.gamePaused.observe(viewLifecycleOwner) {
             if (it == true) {
-                binding.actionPause.visibility = View.INVISIBLE
-                binding.actionGoToSettings.visibility = View.VISIBLE
-                binding.actionRestart.visibility = View.VISIBLE
+                binding.actionPause.gone()
+                binding.actionGoToSettings.visible()
+                binding.actionRestart.visible()
             } else {
-                binding.actionGoToSettings.visibility = View.INVISIBLE
-                binding.actionRestart.visibility = View.INVISIBLE
-                binding.actionPause.visibility = View.VISIBLE
+                binding.actionGoToSettings.gone()
+                binding.actionRestart.gone()
+                binding.actionPause.visible()
             }
         }
 
@@ -103,29 +95,25 @@ class ClockFragment : Fragment() {
         }
 
         viewModel.showAlertTimeOne.observe(viewLifecycleOwner) {
-            if (it == true) binding.clock1.alertTimeIcon.visibility = View.VISIBLE
-            else binding.clock1.alertTimeIcon.visibility = View.INVISIBLE
+            if (it == true) binding.clock1.alertTimeIcon.visible()
+            else binding.clock1.alertTimeIcon.gone()
         }
 
         viewModel.showAlertTimeTwo.observe(viewLifecycleOwner) {
-            if (it == true) binding.clock2.alertTimeIcon.visibility = View.VISIBLE
-            else binding.clock2.alertTimeIcon.visibility = View.INVISIBLE
+            if (it == true) binding.clock2.alertTimeIcon.visible()
+            else binding.clock2.alertTimeIcon.gone()
         }
 
         viewModel.timeUpPlayerOne.observe(viewLifecycleOwner) {
             binding.clock1.root.isClickable = false
             binding.clock2.root.isClickable = false
-            binding.clock1Container.setBackgroundColor(
-                ContextCompat.getColor(requireContext(), R.color.design_default_color_error)
-            )
+            binding.clock1Container.setBgColor(R.color.design_default_color_error)
         }
 
         viewModel.timeUpPlayerTwo.observe(viewLifecycleOwner) {
             binding.clock1.root.isClickable = false
             binding.clock2.root.isClickable = false
-            binding.clock2Container.setBackgroundColor(
-                ContextCompat.getColor(requireContext(), R.color.design_default_color_error)
-            )
+            binding.clock2Container.setBgColor(R.color.design_default_color_error)
         }
 
         viewModel.playClockSound.observe(viewLifecycleOwner) {
@@ -153,8 +141,6 @@ class ClockFragment : Fragment() {
         binding.actionRestart.setOnClickListener { resetClocksAlertDialog() }
 
         binding.actionGoToSettings.setOnClickListener { viewModel.goToSettingsAction() }
-
-        return binding.root
     }
 
     private fun playClockSound() {
@@ -203,10 +189,5 @@ class ClockFragment : Fragment() {
         val action = ClockFragmentDirections.actionClockFragmentToClockListFragment()
         this.findNavController().navigate(action)
         viewModel.onSettingsNavigated()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

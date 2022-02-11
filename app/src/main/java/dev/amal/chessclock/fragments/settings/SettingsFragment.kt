@@ -12,16 +12,17 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import dev.amal.chessclock.R
+import dev.amal.chessclock.databinding.FragmentClockBinding
 import dev.amal.chessclock.databinding.FragmentSettingsBinding
+import dev.amal.chessclock.utils.BaseFragment
 import dev.amal.chessclock.utils.CountDownTimer.Companion.ONE_MINUTE
 import dev.amal.chessclock.utils.CountDownTimer.Companion.ONE_SECOND
 import dev.amal.chessclock.utils.TimePickerDialog
 
 
-class SettingsFragment : Fragment() {
-
-    private var _binding: FragmentSettingsBinding? = null
-    private val binding get() = _binding!!
+class SettingsFragment : BaseFragment<FragmentSettingsBinding>(
+    FragmentSettingsBinding::inflate
+) {
 
     private lateinit var pref: SharedPreferences
 
@@ -34,20 +35,15 @@ class SettingsFragment : Fragment() {
         const val THEME_ID = "theme_id"
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         pref = requireActivity().getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
 
         loadData()
 
         // UI ACTIONS
-        binding.toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
-        }
+        binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
 
         binding.soundSettingContainer.setOnClickListener {
             binding.soundSwitch.isChecked = !binding.soundSwitch.isChecked
@@ -74,15 +70,11 @@ class SettingsFragment : Fragment() {
             renderLowTimeWarningSwitch(isChecked)
         }
 
-        binding.alertTimeSettingContainer.setOnClickListener {
-            showTimePickerForAlertTime()
-        }
+        binding.alertTimeSettingContainer.setOnClickListener { showTimePickerForAlertTime() }
 
         binding.themeSettingsContainer.setOnClickListener {
             findNavController().navigate(R.id.action_settingsFragment_to_themeCustomizationFragment)
         }
-
-        return binding.root
     }
 
     private fun renderLowTimeWarningSwitch(boolean: Boolean) {
@@ -91,26 +83,18 @@ class SettingsFragment : Fragment() {
                 vibrateSettingContainer.isClickable = true
                 vibrateSwitch.isEnabled = true
                 alertTimeSettingContainer.isEnabled = true
-                vibrateSettingsTitle.setTextColor(Color.BLACK)
-                alertTimeTitle.setTextColor(Color.BLACK)
-                alertTimeSummary.setTextColor(
-                    ContextCompat.getColor(requireContext(), R.color.help_text)
-                )
+                vibrateSettingsTitle.setTextViewColor(R.color.black)
+                alertTimeTitle.setTextViewColor(R.color.black)
+                alertTimeSummary.setTextViewColor(R.color.help_text)
             }
         } else {
             binding.apply {
                 vibrateSettingContainer.isClickable = false
                 vibrateSwitch.isEnabled = false
                 alertTimeSettingContainer.isEnabled = false
-                vibrateSettingsTitle.setTextColor(
-                    ContextCompat.getColor(requireContext(), R.color.inactive_text)
-                )
-                alertTimeTitle.setTextColor(
-                    ContextCompat.getColor(requireContext(), R.color.inactive_text)
-                )
-                alertTimeSummary.setTextColor(
-                    ContextCompat.getColor(requireContext(), R.color.inactive_text)
-                )
+                vibrateSettingsTitle.setTextViewColor(R.color.inactive_text)
+                alertTimeTitle.setTextViewColor(R.color.inactive_text)
+                alertTimeSummary.setTextViewColor(R.color.inactive_text)
             }
         }
     }
@@ -159,10 +143,5 @@ class SettingsFragment : Fragment() {
     private fun updateTimeAlertText(alertTime: Long) {
         val alertTimeText = DateUtils.formatElapsedTime(alertTime / ONE_SECOND)
         binding.alertTimeSummary.text = alertTimeText
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

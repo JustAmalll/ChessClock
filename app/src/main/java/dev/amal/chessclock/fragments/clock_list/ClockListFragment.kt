@@ -4,10 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -15,28 +12,22 @@ import com.google.android.material.snackbar.Snackbar
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentClockListBinding
 import dev.amal.chessclock.fragments.settings.SettingsFragment.Companion.PREFERENCES_NAME
+import dev.amal.chessclock.utils.BaseFragment
 import dev.amal.chessclock.utils.ChessUtils.Companion.CURRENT_CLOCK_KEY
 
-class ClockListFragment : Fragment() {
-
-    private var _binding: FragmentClockListBinding? = null
-    private val binding get() = _binding!!
+class ClockListFragment : BaseFragment<FragmentClockListBinding>(
+    FragmentClockListBinding::inflate
+) {
 
     private lateinit var viewModel: ClockListViewModel
-    private lateinit var preferences: SharedPreferences
 
     @SuppressLint("NotifyDataSetChanged")
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentClockListBinding.inflate(inflater, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val application = requireActivity().application
 
-        preferences = requireActivity().getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
-
-        val currentClockId = preferences.getLong(CURRENT_CLOCK_KEY, -1)
+        val currentClockId = pref.getLong(CURRENT_CLOCK_KEY, -1)
 
         val viewModelFactory = ClockListViewModelFactory(application, currentClockId)
         viewModel = ViewModelProvider(this, viewModelFactory).get(ClockListViewModel::class.java)
@@ -48,15 +39,13 @@ class ClockListFragment : Fragment() {
         viewModel.clocks.observe(viewLifecycleOwner) { adapter.data = it }
 
         viewModel.currentClockId.observe(viewLifecycleOwner) {
-            preferences.edit().putLong(CURRENT_CLOCK_KEY, it).apply()
+            pref.edit().putLong(CURRENT_CLOCK_KEY, it).apply()
             adapter.currentClockId = it
             adapter.notifyDataSetChanged()
         }
 
         // UI ACTIONS
-        binding.toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
-        }
+        binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
 
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -74,8 +63,6 @@ class ClockListFragment : Fragment() {
             val action = ClockListFragmentDirections.actionClockListFragmentToTimeControlFragment()
             findNavController().navigate(action)
         }
-
-        return binding.root
     }
 
     private fun getClockItemListener(): ClockItemListener = object : ClockItemListener {
@@ -108,13 +95,10 @@ class ClockListFragment : Fragment() {
         val dialog = MaterialAlertDialogBuilder(requireContext())
         dialog.setTitle(R.string.delete_clock_title)
         dialog.setMessage(R.string.delete_clock_message)
-        dialog.setPositiveButton(R.string.delete_clock_confirm_button) { _, _ -> viewModel.removeItem(clockId) }
+        dialog.setPositiveButton(R.string.delete_clock_confirm_button) { _, _ ->
+            viewModel.removeItem(clockId)
+        }
         dialog.setNegativeButton(R.string.cancel_button) { _, _ -> }
         dialog.show()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

@@ -1,56 +1,42 @@
 package dev.amal.chessclock.fragments.time_control_fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentTimeControlBinding
+import dev.amal.chessclock.utils.BaseFragment
 import dev.amal.chessclock.utils.TimePickerDialog
 
-class TimeControlFragment : Fragment() {
-
-    private var _binding: FragmentTimeControlBinding? = null
-    private val binding get() = _binding!!
+class TimeControlFragment : BaseFragment<FragmentTimeControlBinding>(
+    FragmentTimeControlBinding::inflate
+) {
 
     private lateinit var viewModel: TimeControlViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentTimeControlBinding.inflate(inflater, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val args = TimeControlFragmentArgs.fromBundle(requireArguments())
         setAppbarTitle(args.editOption)
 
         val application = requireActivity().application
-
         val viewModelFactory =
             TimeControlViewModelFactory(application, args.clockId, args.editOption)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(TimeControlViewModel::class.java)
 
         // OBSERVERS
-        viewModel.firstPlayerTime.observe(viewLifecycleOwner) {
-            binding.playerOneTime.text = it
-        }
+        viewModel.firstPlayerTime.observe(viewLifecycleOwner) { binding.playerOneTime.text = it }
 
-        viewModel.secondPlayerTime.observe(viewLifecycleOwner) {
-            binding.playerTwoTime.text = it
-        }
+        viewModel.secondPlayerTime.observe(viewLifecycleOwner) { binding.playerTwoTime.text = it }
 
         viewModel.sameValueSwitch.observe(viewLifecycleOwner) {
             binding.sameTimeSwitch.isChecked = it
         }
 
-        viewModel.incrementTime.observe(viewLifecycleOwner) {
-            binding.incrementTime.text = it
-        }
+        viewModel.incrementTime.observe(viewLifecycleOwner) { binding.incrementTime.text = it }
 
         viewModel.closeFragment.observe(viewLifecycleOwner) {
             if (it) {
@@ -81,8 +67,6 @@ class TimeControlFragment : Fragment() {
         }
 
         binding.incrementTime.setOnClickListener { showTimePickerForIncrement() }
-
-        return binding.root
     }
 
     private fun showTimePickerForPlayerOne() {
@@ -127,10 +111,5 @@ class TimeControlFragment : Fragment() {
     private fun setAppbarTitle(editOption: Boolean) {
         if (editOption) binding.toolbar.title = getString(R.string.app_bar_edit_title)
         else binding.toolbar.title = getString(R.string.app_bar_create_title)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

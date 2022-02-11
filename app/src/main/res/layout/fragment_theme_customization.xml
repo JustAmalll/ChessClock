@@ -141,9 +141,9 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/theme_second_description"
                 android:padding="5dp"
-                android:src="@drawable/ic_theme_round_two"
-                android:contentDescription="@string/theme_second_description" />
+                android:src="@drawable/ic_theme_round_two" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animatedCheckMark2"
@@ -193,9 +193,9 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/theme_fourth_description"
                 android:padding="5dp"
-                android:src="@drawable/ic_theme_round_four"
-                android:contentDescription="@string/theme_fourth_description" />
+                android:src="@drawable/ic_theme_round_four" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animatedCheckMark4"
@@ -253,9 +253,9 @@
                 android:id="@+id/sixthThemeCv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/theme_sixth_description"
                 android:padding="5dp"
-                android:src="@drawable/ic_theme_round_six"
-                android:contentDescription="@string/theme_sixth_description" />
+                android:src="@drawable/ic_theme_round_six" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animatedCheckMark6"
@@ -268,15 +268,29 @@
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/apply_button"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/applyButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/theme_apply_button"
+        app:cardBackgroundColor="@color/theme_one_main"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/theme_apply_button"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
