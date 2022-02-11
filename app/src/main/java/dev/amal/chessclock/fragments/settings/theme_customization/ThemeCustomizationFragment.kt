@@ -1,5 +1,8 @@
 package dev.amal.chessclock.fragments.settings.theme_customization
 
+import android.animation.ArgbEvaluator
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -21,7 +24,7 @@ class ThemeCustomizationFragment : BaseFragment<FragmentThemeCustomizationBindin
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        when (pref.getInt(THEME_ID, 2)) {
+        when (preferences.getInt(THEME_ID, 2)) {
             1 -> {
                 setFirstTheme()
                 binding.animatedCheckMark1.speed = 999f
@@ -123,7 +126,7 @@ class ThemeCustomizationFragment : BaseFragment<FragmentThemeCustomizationBindin
 
         binding.applyButton.setOnClickListener {
             viewModel.currentThemeId.observe(viewLifecycleOwner) {
-                pref.edit().putInt(THEME_ID, it).apply()
+                preferences.edit().putInt(THEME_ID, it).apply()
             }
             (activity as MainActivity).setTheme()
             findNavController().navigate(R.id.action_themeCustomizationFragment_to_settingsFragment)
@@ -159,6 +162,7 @@ class ThemeCustomizationFragment : BaseFragment<FragmentThemeCustomizationBindin
             setSixthTheme()
         }
     }
+
 
     private fun setFirstTheme() {
         binding.apply {

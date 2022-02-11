@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -25,9 +26,11 @@ class ClockListFragment : BaseFragment<FragmentClockListBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.dark_gray)
+
         val application = requireActivity().application
 
-        val currentClockId = pref.getLong(CURRENT_CLOCK_KEY, -1)
+        val currentClockId = preferences.getLong(CURRENT_CLOCK_KEY, -1)
 
         val viewModelFactory = ClockListViewModelFactory(application, currentClockId)
         viewModel = ViewModelProvider(this, viewModelFactory).get(ClockListViewModel::class.java)
@@ -39,7 +42,7 @@ class ClockListFragment : BaseFragment<FragmentClockListBinding>(
         viewModel.clocks.observe(viewLifecycleOwner) { adapter.data = it }
 
         viewModel.currentClockId.observe(viewLifecycleOwner) {
-            pref.edit().putLong(CURRENT_CLOCK_KEY, it).apply()
+            preferences.edit().putLong(CURRENT_CLOCK_KEY, it).apply()
             adapter.currentClockId = it
             adapter.notifyDataSetChanged()
         }

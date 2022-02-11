@@ -16,6 +16,7 @@ import androidx.transition.TransitionManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentClockBinding
+import dev.amal.chessclock.fragments.settings.SettingsFragment.Companion.THEME_ID
 import dev.amal.chessclock.utils.BaseFragment
 
 
@@ -30,6 +31,15 @@ class ClockFragment : BaseFragment<FragmentClockBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        when (preferences.getInt(THEME_ID, 2)) {
+            1 -> activity?.window?.statusBarColor = getContextCompactColor(R.color.theme_one_main)
+            2 -> activity?.window?.statusBarColor = getContextCompactColor(R.color.theme_two_main)
+            3 -> activity?.window?.statusBarColor = getContextCompactColor(R.color.theme_three_main)
+            4 -> activity?.window?.statusBarColor = getContextCompactColor(R.color.theme_four_main)
+            5 -> activity?.window?.statusBarColor = getContextCompactColor(R.color.theme_five_main)
+            6 -> activity?.window?.statusBarColor = getContextCompactColor(R.color.theme_six_main)
+        }
 
         clockSound = MediaPlayer.create(requireContext(), R.raw.chess_clock_sound)
         timeUpSound = MediaPlayer.create(context, R.raw.time_up_sound)

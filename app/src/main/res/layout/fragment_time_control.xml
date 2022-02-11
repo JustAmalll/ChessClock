@@ -32,8 +32,8 @@
             android:id="@+id/time_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
             android:text="@string/time_label"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -89,21 +89,21 @@
             android:textColor="?textColorTimeControl"
             android:textSize="28sp"
             android:textStyle="bold"
-            tools:backgroundTint="@color/theme_two_main"
-            tools:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/increment_label"
             app:layout_constraintEnd_toEndOf="@+id/player_two_time"
             app:layout_constraintTop_toTopOf="@+id/increment_label"
-            tools:text="00:00" />
+            tools:backgroundTint="@color/theme_two_main"
+            tools:text="00:00"
+            tools:textColor="@color/white" />
 
         <TextView
             android:id="@+id/player_two_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:textColor="@color/black"
             android:layout_marginEnd="6dp"
             android:text="@string/player_two_label"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="@+id/player_two_time"
             app:layout_constraintTop_toBottomOf="@id/time_header" />
 
@@ -125,8 +125,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_marginTop="24dp"
-            android:textColor="@color/black"
             android:text="@string/player_one_label"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/player_one_time"
             app:layout_constraintTop_toBottomOf="@id/time_header" />
 
@@ -140,7 +140,6 @@
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/same_time_switch"
-            style="@style/Widget.App.Switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -148,9 +147,12 @@
             android:text="@string/same_times_switch"
             app:layout_constraintEnd_toEndOf="@+id/player_two_time"
             app:layout_constraintTop_toBottomOf="@+id/player_two_time"
+            app:switchMinWidth="56dp"
             app:switchPadding="8dp"
             app:thumbTint="?switchThumbTint"
-            app:trackTint="?switchTrackTint" />
+            app:trackTint="?switchTrackTint"
+            tools:trackTint="#9D9D9D"
+            tools:thumbTint="#3B3B3B" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
