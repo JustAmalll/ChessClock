@@ -1,4 +1,4 @@
-package dev.amal.chessclock.fragments.settings
+package dev.amal.chessclock.fragments.settings.theme_customization
 
 import android.content.Context
 import android.graphics.Color
@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import dev.amal.chessclock.MainActivity
 import dev.amal.chessclock.R
 import dev.amal.chessclock.databinding.FragmentThemeCustomizationBinding
+import dev.amal.chessclock.fragments.settings.SettingsFragment
 import dev.amal.chessclock.fragments.settings.SettingsFragment.Companion.THEME_ID
 
 

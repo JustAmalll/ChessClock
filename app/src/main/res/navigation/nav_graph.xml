@@ -69,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/themeCustomizationFragment"
-        android:name="dev.amal.chessclock.fragments.settings.ThemeCustomizationFragment"
+        android:name="dev.amal.chessclock.fragments.settings.theme_customization.ThemeCustomizationFragment"
         android:label="fragment_theme_customization"
         tools:layout="@layout/fragment_theme_customization">
         <action

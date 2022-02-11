@@ -25,6 +25,7 @@
             android:layout_height="64dp"
             android:layout_margin="8dp"
             android:contentDescription="@string/thumbnail_clock_description"
+            tools:ignore="ImageContrastCheck"
             tools:src="@drawable/ic_classic_game" />
 
         <LinearLayout
@@ -53,5 +54,4 @@
 
         </LinearLayout>
     </LinearLayout>
-
 </com.google.android.material.card.MaterialCardView>

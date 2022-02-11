@@ -11,9 +11,9 @@ class ClockListViewModelFactory(
 ) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ClockListViewModel::class.java))
-            ClockListViewModel(application, clockId) as T
+        if (modelClass.isAssignableFrom(ClockListViewModel::class.java)) {
+            return ClockListViewModel(application, clockId) as T
+        }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-
 }

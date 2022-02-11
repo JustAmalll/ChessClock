@@ -144,26 +144,16 @@ class ClockFragment : Fragment() {
         }
 
         // UI actions
-        binding.clock1.root.setOnClickListener {
-            viewModel.onClickClock1()
-        }
+        binding.clock1.root.setOnClickListener { viewModel.onClickClock1() }
 
-        binding.clock2.root.setOnClickListener {
-            viewModel.onClickClock2()
-        }
+        binding.clock2.root.setOnClickListener { viewModel.onClickClock2() }
 
-        binding.actionPause.setOnClickListener {
-            viewModel.onClickPause()
-        }
+        binding.actionPause.setOnClickListener { viewModel.onClickPause() }
 
-        binding.actionRestart.setOnClickListener {
-            resetClocksAlertDialog()
-        }
+        binding.actionRestart.setOnClickListener { resetClocksAlertDialog() }
 
-        binding.actionGoToSettings.setOnClickListener {
-            viewModel.goToSettingsAction()
-        }
-        //...
+        binding.actionGoToSettings.setOnClickListener { viewModel.goToSettingsAction() }
+
         return binding.root
     }
 
@@ -189,9 +179,7 @@ class ClockFragment : Fragment() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             vibrator.cancel() // cancel any other current vibration
             vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE))
-        } else {
-            vibrator.vibrate(500)
-        }
+        } else vibrator.vibrate(500)
     }
 
     private fun resetClocksAlertDialog() {

@@ -61,5 +61,4 @@ abstract class CountDownTimer(millisInFuture: Long, private var countDownInterva
         timer.cancel()
         state = NOT_STARTED
     }
-
 }

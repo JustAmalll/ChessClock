@@ -65,12 +65,14 @@ class ClockListAdapter(
 
         fun bind(clock: ChessClock, currentClockId: Long) {
             this.chessClock = clock
+
             gameTimes.text = ChessUtils.getTimesText(
                 itemView.resources,
                 chessClock.firstPlayerTime,
                 chessClock.secondPlayerTime,
                 chessClock.increment
             )
+
             when (clock.gameType) {
                 BULLET -> {
                     clockThumbnail.setImageResource(R.drawable.ic_bullet_game)
@@ -103,7 +105,6 @@ class ClockListAdapter(
                 gameType.setTextColor(ContextCompat.getColor(itemView.context, R.color.grey_800))
                 gameTimes.setTextColor(ContextCompat.getColor(itemView.context, R.color.grey_800))
             }
-
         }
 
         override fun onCreateContextMenu(

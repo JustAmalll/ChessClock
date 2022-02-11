@@ -4,10 +4,14 @@
       <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/5cde8317a2a59c7ebd02a3f0826a694a/transformed/fragment-ktx-1.4.0/res" />
       <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-3/5cde8317a2a59c7ebd02a3f0826a694a/transformed/fragment-ktx-1.4.0/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/5cde8317a2a59c7ebd02a3f0826a694a/transformed/fragment-ktx-1.4.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5cde8317a2a59c7ebd02a3f0826a694a/transformed/fragment-ktx-1.4.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5cde8317a2a59c7ebd02a3f0826a694a/transformed/fragment-ktx-1.4.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5cde8317a2a59c7ebd02a3f0826a694a/transformed/fragment-ktx-1.4.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/androidx.fragment/fragment-ktx/1.4.0/2064e157d891676f2cf4e59c4643c54b759b3ad/fragment-ktx-1.4.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.fragment/fragment-ktx/1.4.0/2064e157d891676f2cf4e59c4643c54b759b3ad/fragment-ktx-1.4.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

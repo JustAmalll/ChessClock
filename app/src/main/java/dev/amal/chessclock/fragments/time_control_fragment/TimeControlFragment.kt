@@ -60,9 +60,7 @@ class TimeControlFragment : Fragment() {
         }
 
         // UI ACTIONS
-        binding.toolbar.setNavigationOnClickListener {
-            viewModel.onNavigationClick()
-        }
+        binding.toolbar.setNavigationOnClickListener { viewModel.onNavigationClick() }
 
         binding.toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
@@ -74,21 +72,15 @@ class TimeControlFragment : Fragment() {
             }
         }
 
-        binding.playerOneTime.setOnClickListener {
-            showTimePickerForPlayerOne()
-        }
+        binding.playerOneTime.setOnClickListener { showTimePickerForPlayerOne() }
 
-        binding.playerTwoTime.setOnClickListener {
-            showTimePickerForPlayerTwo()
-        }
+        binding.playerTwoTime.setOnClickListener { showTimePickerForPlayerTwo() }
 
         binding.sameTimeSwitch.setOnCheckedChangeListener { _, isChecked ->
             viewModel.onSameValueSwitchChange(isChecked)
         }
 
-        binding.incrementTime.setOnClickListener {
-            showTimePickerForIncrement()
-        }
+        binding.incrementTime.setOnClickListener { showTimePickerForIncrement() }
 
         return binding.root
     }

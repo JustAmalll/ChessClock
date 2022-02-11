@@ -1,13 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Chess Clock</string>
+
+    <!--Clock Fragment-->
+    <string name="tap_to_start_hint">Нажмите чтобы начать</string>
+    <string name="paused_clock_hint">Нажмите чтобы продолжить</string>
+    <string name="settings_button_description">Настройки</string>
+    <string name="pause_clocks_button_description">Остановить часы</string>
+    <string name="reset_clocks_button_description">Сброс часов</string>
+    <string name="alert_time_icon_description">Значок времени оповещения</string>
+
+    <!--Clock List Fragment-->
+    <string name="clock_list_appbar_title">Список режимов</string>
+    <string name="clock_list_appbar_description">Список режимов</string>
+    <string name="add_clock_description">Добавить режим</string>
+    <string name="bullet_type">Пуля</string>
+    <string name="rapid_type">Быстрый</string>
+    <string name="blitz_type">Блиц</string>
+    <string name="classic_type">Классический</string>
+    <string name="edit_menu_item">Редактировать</string>
+    <string name="delete_menu_item">Удалить</string>
+    <string name="increment_clock">Добавление %1$s</string>
+    <string name="no_increment_clock">Без добавления</string>
+    <string name="thumbnail_clock_description">Миниатюра шахматных часов</string>
+    <string name="empty_clock_list_advice">У вас должен быть хотя бы один режим</string>
+
+    <!--Time Control Fragment-->
+    <string name="app_bar_create_title">Новый режим</string>
+    <string name="app_bar_edit_title">Редактировать режим</string>
+    <string name="option_menu_save_title">Сохранить</string>
+    <string name="save_clock_description">Сохранить часы</string>
+    <string name="exit_icon_description">Выход</string>
+    <string name="time_label">Время</string>
+    <string name="player_one_label">Первый игрок</string>
+    <string name="player_two_label">Второй игрок</string>
+    <string name="increment_label">Добавление</string>
+    <string name="player_one_button_description">Время первого игрока</string>
+    <string name="player_two_button_description">Время второго игрока</string>
+    <string name="increment_button_description">Добавление времени</string>
+    <string name="same_times_switch">То же время для второго игрока</string>
+    <string name="hours">Часы</string>
+    <string name="hour_picker_description">Выбор часов</string>
+    <string name="minutes">Минуты</string>
+    <string name="minutes_picker_description">Выбор минут</string>
+    <string name="seconds">Секунды</string>
+    <string name="seconds_picker_description">Выбор секунд</string>
+
+    <!--Settings-->
+    <string name="settings_appbar_title">Настройки</string>
+    <string name="settings_option_menu_title">Настройки</string>
+    <string name="settings_app_bar_description">Настройки</string>
     <string name="sound_settings_title">Звук</string>
     <string name="sound_settings_summary">Звуковой сигнал после каждого хода</string>
-    <string name="vibrate_settings_title">Вибрация</string>
+    <string name="sound_settings_icon_description">Перейти в настройки</string>
     <string name="low_time_warning_settings_title">Предупреждать о приближении к \nзаданному времени</string>
-    <string name="settings_option_menu_title">"Настройки"</string>
+    <string name="low_time_warning_setting_description">Время предупреждения настройка</string>
+    <string name="vibrate_settings_title">Вибрация</string>
+    <string name="vibrate_setting_description">Настройка вибрации</string>
     <string name="alert_time_title">Время предупреждения</string>
-    <string name="settings_appbar_title">"Настройки "</string>
-    <string name="settings_app_bar_description">"Настройки "</string>
+    <string name="alert_time_description">Выбрать время предупреждения</string>
+    <string name="theme_settings_title">Темы</string>
+    <string name="themes_setting_description">Настройки темы</string>
+    <string name="theme_settings_summary">Нажмите, чтобы настроить тему</string>
+
+    <!--Theme Customization Settings-->
     <string name="themes_appbar_title">Темы</string>
+    <string name="themes_app_bar_description">Темы</string>
+    <string name="theme_first_description">Первая тема</string>
+    <string name="theme_second_description">Вторая тема</string>
+    <string name="theme_third_description">Третья тема</string>
+    <string name="theme_fourth_description">Четвертая тема</string>
+    <string name="theme_fifth_description">Пятая тема</string>
+    <string name="theme_sixth_description">Шестая тема</string>
+    <string name="theme_apply_button">Применить</string>
+
+    <!--Alert Dialog-->
+    <string name="reset_timer_title">Сбросить таймер</string>
+    <string name="reset_button">Сброс</string>
+    <string name="cancel_button">Отменить</string>
+    <string name="delete_clock_title">Удалить часы</string>
+    <string name="delete_clock_message">Пожалуйста, подтвердите удаление часов</string>
+    <string name="set_time_button">ОК</string>
+    <string name="delete_clock_confirm_button">ОК</string>
+    <string name="timer_picker_title">Выбрать время</string>
+
+    <!--General-->
+    <string name="back_icon_description">Назад</string>
+
 </resources>

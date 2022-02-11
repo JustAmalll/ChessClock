@@ -1,4 +1,4 @@
-package dev.amal.chessclock.fragments.settings
+package dev.amal.chessclock.fragments.settings.theme_customization
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

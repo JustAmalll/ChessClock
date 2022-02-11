@@ -188,7 +188,7 @@
                 android:id="@+id/alert_time_summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="00:00:00"
+                android:text="@string/default_alert_time"
                 android:textColor="@color/help_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/alert_time_title"
@@ -210,29 +210,25 @@
             android:layout_marginTop="4dp"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:contentDescription="@string/vibrate_setting_description"
+            android:contentDescription="@string/themes_setting_description"
             android:focusable="true"
             android:orientation="vertical"
             android:paddingHorizontal="16dp"
             android:paddingVertical="5dp">
 
             <TextView
-                android:id="@+id/theme_settings_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Theme"
+                android:text="@string/theme_settings_title"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/theme_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Click to customize the theme"
+                android:text="@string/theme_settings_summary"
                 android:textColor="@color/help_text" />
 
         </LinearLayout>
-
     </LinearLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

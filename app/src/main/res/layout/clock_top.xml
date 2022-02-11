@@ -29,9 +29,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:textColor="@color/grey_800"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:text="05:00" />
+        tools:text="05:00"
+        tools:textColor="@color/grey_800" />
 
     <TextView
         android:id="@+id/text_view_hint"
@@ -39,24 +39,23 @@
         android:layout_height="wrap_content"
         android:text="@string/tap_to_start_hint"
         android:textColor="?textColorTop"
-        android:textSize="28sp"
-        tools:textColor="@color/grey_800"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_clock" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_clock"
+        tools:textColor="@color/grey_800" />
 
     <TextView
         android:id="@+id/text_movements_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="@string/initial_moves_text"
         android:textColor="?textColorTop"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        tools:text="0"
         tools:textColor="@color/grey_800" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.settings.ThemeCustomizationFragment">
+    tools:context=".fragments.settings.theme_customization.ThemeCustomizationFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -27,7 +27,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/previewCardView"
+        android:id="@+id/CardViewPreview"
         android:layout_width="170dp"
         android:layout_height="320dp"
         android:layout_marginTop="20dp"
@@ -55,10 +55,11 @@
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
                     android:rotation="180"
-                    android:text="10:24"
+                    android:text="@string/theme_first_player_time_preview"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck" />
 
             </LinearLayout>
 
@@ -74,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="12:30"
+                    android:text="@string/theme_second_player_time_preview"
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -92,7 +93,7 @@
         android:background="?android:attr/dividerVertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/previewCardView" />
+        app:layout_constraintTop_toBottomOf="@+id/CardViewPreview" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -115,6 +116,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/theme_first_description"
                 android:padding="5dp"
                 android:src="@drawable/ic_theme_round_one" />
 
@@ -140,7 +142,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:src="@drawable/ic_theme_round_two" />
+                android:src="@drawable/ic_theme_round_two"
+                android:contentDescription="@string/theme_second_description" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animatedCheckMark2"
@@ -163,8 +166,10 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/theme_third_description"
                 android:padding="5dp"
-                android:src="@drawable/ic_theme_round_three" />
+                android:src="@drawable/ic_theme_round_three"
+                tools:ignore="ImageContrastCheck" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animatedCheckMark3"
@@ -172,7 +177,8 @@
                 android:layout_height="62dp"
                 android:layout_gravity="center"
                 app:lottie_colorFilter="@color/white"
-                app:lottie_rawRes="@raw/check" />
+                app:lottie_rawRes="@raw/check"
+                tools:ignore="ImageContrastCheck" />
 
         </androidx.cardview.widget.CardView>
 
@@ -188,7 +194,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:src="@drawable/ic_theme_round_four" />
+                android:src="@drawable/ic_theme_round_four"
+                android:contentDescription="@string/theme_fourth_description" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animatedCheckMark4"
@@ -199,7 +206,6 @@
                 app:lottie_rawRes="@raw/check" />
 
         </androidx.cardview.widget.CardView>
-
     </LinearLayout>
 
     <LinearLayout
@@ -220,8 +226,10 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/theme_fifth_description"
                 android:padding="5dp"
-                android:src="@drawable/ic_theme_round_five" />
+                android:src="@drawable/ic_theme_round_five"
+                tools:ignore="ImageContrastCheck" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animatedCheckMark5"
@@ -229,7 +237,8 @@
                 android:layout_height="62dp"
                 android:layout_gravity="center"
                 app:lottie_colorFilter="@color/white"
-                app:lottie_rawRes="@raw/check" />
+                app:lottie_rawRes="@raw/check"
+                tools:ignore="ImageContrastCheck" />
 
         </androidx.cardview.widget.CardView>
 
@@ -245,7 +254,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:src="@drawable/ic_theme_round_six" />
+                android:src="@drawable/ic_theme_round_six"
+                android:contentDescription="@string/theme_sixth_description" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animatedCheckMark6"
@@ -256,7 +266,6 @@
                 app:lottie_rawRes="@raw/check" />
 
         </androidx.cardview.widget.CardView>
-
     </LinearLayout>
 
     <Button
@@ -265,7 +274,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="20dp"
-        android:text="Apply"
+        android:text="@string/theme_apply_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

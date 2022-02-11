@@ -1,67 +1,93 @@
 <resources>
     <string name="app_name">Chess Clock</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Clock Fragment-->
+    <string name="tap_to_start_hint">Tap to start</string>
+    <string name="paused_clock_hint">Tap to resume</string>
+    <string name="settings_button_description">Settings</string>
+    <string name="pause_clocks_button_description">Pause clocks</string>
+    <string name="reset_clocks_button_description">Reset clocks</string>
+    <string name="alert_time_icon_description">Alert time icon</string>
+
+    <!--Clock List Fragment-->
+    <string name="clock_list_appbar_title">Clock List</string>
+    <string name="clock_list_appbar_description">Clock list</string>
     <string name="add_clock_description">Add clock</string>
-    <string name="thumbnail_clock_description">Chess clock thumbnail</string>
-    <string name="clock_item_times">%1$dm vs %2$dm</string>
     <string name="bullet_type">Bullet</string>
     <string name="blitz_type">Blitz</string>
     <string name="rapid_type">Rapid</string>
     <string name="classic_type">Classic</string>
-    <string name="time_label">Time</string>
-    <string name="increment_label">Increment</string>
-    <string name="player_one_label">Player One</string>
-    <string name="player_two_label">Player Two</string>
-    <string name="same_times_switch">Same as Player One</string>
-    <string name="clock_list_appbar_title">Clock List</string>
-    <string name="clock_list_appbar_description">Clock list</string>
-    <string name="settings_appbar_title">Settings</string>
-    <string name="settings_app_bar_description">Settings</string>
-    <string name="themes_app_bar_description">Themes</string>
-    <string name="back_icon_description">Back</string>
-    <string name="exit_icon_description">Exit</string>
-    <string name="sound_settings_icon_description">Go to settings</string>
-    <string name="settings_option_menu_title">Settings</string>
-    <string name="sound_settings_title">Sound</string>
-    <string name="sound_settings_summary">After each move</string>
-    <string name="vibrate_settings_title">Vibrate</string>
-    <string name="low_time_warning_settings_title">Low time warning</string>
-    <string name="alert_time_title">Alert time</string>
-    <string name="option_menu_save_title">Save</string>
-    <string name="app_bar_edit_title">Edit Clock</string>
-    <string name="app_bar_create_title">New Clock</string>
-    <string name="no_increment_clock">No increment</string>
-    <string name="increment_clock">Increment %1$s</string>
-    <string name="alert_time_icon_description">Alert time icon</string>
-    <string name="tap_to_start_hint">Tap to start</string>
-    <string name="initial_moves_text">0</string>
     <string name="edit_menu_item">Edit</string>
     <string name="delete_menu_item">Delete</string>
+    <string name="increment_clock">Increment %1$s</string>
+    <string name="clock_item_times" translatable="false">%1$dm vs %2$dm</string>
+    <string name="no_increment_clock">No increment</string>
+    <string name="thumbnail_clock_description">Chess clock thumbnail</string>
     <string name="empty_clock_list_advice">You must have at least one clock</string>
-    <string name="delete_clock_title">Delete clock</string>
-    <string name="delete_clock_message">Please confirm</string>
-    <string name="delete_clock_confirm_button">OK</string>
-    <string name="paused_clock_hint">Tap to resume</string>
-    <string name="reset_timer_title">Reset Timer</string>
-    <string name="reset_button">Reset</string>
-    <string name="cancel_button">Cancel</string>
-    <string name="timer_picker_title">Select time</string>
-    <string name="set_time_button">OK</string>
-    <string name="settings_button_description">Settings</string>
-    <string name="reset_clocks_button_description">Reset clocks</string>
-    <string name="pause_clocks_button_description">Pause clocks</string>
+
+    <!--Time Control Fragment-->
+    <string name="app_bar_create_title">New Clock</string>
+    <string name="app_bar_edit_title">Edit Clock</string>
+    <string name="option_menu_save_title">Save</string>
+    <string name="save_clock_description">Save clock</string>
+    <string name="exit_icon_description">Exit</string>
+    <string name="time_label">Time</string>
+    <string name="player_one_label">Player One</string>
+    <string name="player_two_label">Player Two</string>
+    <string name="increment_label">Increment</string>
     <string name="player_one_button_description">Player one time</string>
     <string name="player_two_button_description">Player two time</string>
     <string name="increment_button_description">Increment time</string>
-    <string name="low_time_warning_setting_description">Low time warning setting</string>
-    <string name="vibrate_setting_description">Vibrate setting</string>
-    <string name="alert_time_description">Select alert time</string>
+    <string name="same_times_switch">Same as Player One</string>
     <string name="hours">Hours</string>
     <string name="hour_picker_description">Hours selector</string>
     <string name="minutes">Minutes</string>
     <string name="minutes_picker_description">Minutes selector</string>
     <string name="seconds">Seconds</string>
     <string name="seconds_picker_description">Seconds selector</string>
-    <string name="save_clock_description">Save clock</string>
+
+    <!--Settings-->
+    <string name="settings_appbar_title">Settings</string>
+    <string name="settings_option_menu_title">Settings</string>
+    <string name="settings_app_bar_description">Settings</string>
+    <string name="sound_settings_title">Sound</string>
+    <string name="sound_settings_summary">After each move</string>
+    <string name="sound_settings_icon_description">Go to settings</string>
+    <string name="low_time_warning_settings_title">Low time warning</string>
+    <string name="low_time_warning_setting_description">Low time warning setting</string>
+    <string name="vibrate_settings_title">Vibrate</string>
+    <string name="vibrate_setting_description">Vibrate setting</string>
+    <string name="alert_time_title">Alert time</string>
+    <string name="alert_time_description">Select alert time</string>
+    <string name="default_alert_time" translatable="false">00:00:00</string>
+    <string name="theme_settings_title">Theme</string>
+    <string name="themes_setting_description">Themes setting</string>
+    <string name="theme_settings_summary">Click to customize the theme</string>
+
+    <!--Theme Customization Settings-->
     <string name="themes_appbar_title">Themes</string>
+    <string name="themes_app_bar_description">Themes</string>
+    <string name="theme_first_player_time_preview" translatable="false">10:24</string>
+    <string name="theme_second_player_time_preview" translatable="false">12:30</string>
+    <string name="theme_first_description">First theme</string>
+    <string name="theme_second_description">Second theme</string>
+    <string name="theme_third_description">Third theme</string>
+    <string name="theme_fourth_description">Fourth theme</string>
+    <string name="theme_fifth_description">Fifth theme</string>
+    <string name="theme_sixth_description">Sixth theme</string>
+    <string name="theme_apply_button">Apply</string>
+
+    <!--Alert Dialog-->
+    <string name="reset_timer_title">Reset Timer</string>
+    <string name="reset_button">Reset</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="delete_clock_title">Delete clock</string>
+    <string name="delete_clock_message">Please confirm</string>
+    <string name="delete_clock_confirm_button">OK</string>
+    <string name="set_time_button">OK</string>
+    <string name="timer_picker_title">Select time</string>
+
+    <!--General-->
+    <string name="back_icon_description">Back</string>
+
 </resources>
