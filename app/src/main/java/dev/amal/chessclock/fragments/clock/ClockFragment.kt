@@ -32,14 +32,7 @@ class ClockFragment : BaseFragment<FragmentClockBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        when (preferences.getInt(THEME_ID, 2)) {
-            1 -> activity?.window?.statusBarColor = getContextCompactColor(R.color.theme_one_main)
-            2 -> activity?.window?.statusBarColor = getContextCompactColor(R.color.theme_two_main)
-            3 -> activity?.window?.statusBarColor = getContextCompactColor(R.color.theme_three_main)
-            4 -> activity?.window?.statusBarColor = getContextCompactColor(R.color.theme_four_main)
-            5 -> activity?.window?.statusBarColor = getContextCompactColor(R.color.theme_five_main)
-            6 -> activity?.window?.statusBarColor = getContextCompactColor(R.color.theme_six_main)
-        }
+        setStatusBarColor()
 
         clockSound = MediaPlayer.create(requireContext(), R.raw.chess_clock_sound)
         timeUpSound = MediaPlayer.create(context, R.raw.time_up_sound)
@@ -179,7 +172,7 @@ class ClockFragment : BaseFragment<FragmentClockBinding>(
     }
 
     private fun resetClocksAlertDialog() {
-        val restartBuilder = MaterialAlertDialogBuilder(requireContext())
+        val restartBuilder = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme)
         restartBuilder.apply {
             setTitle(R.string.reset_timer_title)
             setPositiveButton(R.string.reset_button) { _, _ -> resetTimer() }
@@ -199,5 +192,18 @@ class ClockFragment : BaseFragment<FragmentClockBinding>(
         val action = ClockFragmentDirections.actionClockFragmentToClockListFragment()
         this.findNavController().navigate(action)
         viewModel.onSettingsNavigated()
+    }
+
+    private fun setStatusBarColor() {
+        activity?.window?.apply {
+            when (preferences.getInt(THEME_ID, 2)) {
+                1 -> statusBarColor = getContextCompactColor(R.color.theme_one_main)
+                2 -> statusBarColor = getContextCompactColor(R.color.theme_two_main)
+                3 -> statusBarColor = getContextCompactColor(R.color.theme_three_main)
+                4 -> statusBarColor = getContextCompactColor(R.color.theme_four_main)
+                5 -> statusBarColor = getContextCompactColor(R.color.theme_five_main)
+                6 -> statusBarColor = getContextCompactColor(R.color.theme_six_main)
+            }
+        }
     }
 }

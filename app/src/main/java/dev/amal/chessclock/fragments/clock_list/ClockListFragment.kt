@@ -26,7 +26,8 @@ class ClockListFragment : BaseFragment<FragmentClockListBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.dark_gray)
+        activity?.window?.statusBarColor =
+            ContextCompat.getColor(requireContext(), R.color.dark_gray)
 
         val application = requireActivity().application
 
@@ -95,13 +96,15 @@ class ClockListFragment : BaseFragment<FragmentClockListBinding>(
     }
 
     private fun showConfirmDeleteDialog(clockId: Long) {
-        val dialog = MaterialAlertDialogBuilder(requireContext())
-        dialog.setTitle(R.string.delete_clock_title)
-        dialog.setMessage(R.string.delete_clock_message)
-        dialog.setPositiveButton(R.string.delete_clock_confirm_button) { _, _ ->
-            viewModel.removeItem(clockId)
+        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme)
+        dialog.apply {
+            setTitle(R.string.delete_clock_title)
+            setMessage(R.string.delete_clock_message)
+            setPositiveButton(R.string.delete_clock_confirm_button) { _, _ ->
+                viewModel.removeItem(clockId)
+            }
+            setNegativeButton(R.string.cancel_button) { _, _ -> }
+            show()
         }
-        dialog.setNegativeButton(R.string.cancel_button) { _, _ -> }
-        dialog.show()
     }
 }
