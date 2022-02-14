@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="fragments.settings.SettingsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -15,10 +16,13 @@
             style="@style/Widget.MaterialComponents.Toolbar.Surface"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:contentDescription="@string/settings_app_bar_description"
             app:navigationContentDescription="@string/back_icon_description"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="@string/settings_appbar_title" />
+            app:navigationIconTint="@color/black"
+            app:title="@string/settings_appbar_title"
+            app:titleTextColor="@color/black" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -76,7 +80,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:switchMinWidth="56dp"
                 app:thumbTint="?switchThumbTint"
-                app:trackTint="?switchTrackTint" />
+                app:trackTint="?switchTrackTint"
+                tools:thumbTint="#3B3B3B"
+                tools:trackTint="#9D9D9D" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -84,6 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginHorizontal="16dp"
+            android:backgroundTint="@color/black"
             android:background="?android:attr/dividerVertical" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -200,6 +207,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginHorizontal="16dp"
+            android:backgroundTint="@color/black"
             android:background="?android:attr/dividerVertical" />
 
         <LinearLayout
