@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import dev.amal.chessclock.R
 import dev.amal.chessclock.database.ChessClock
+import dev.amal.chessclock.databinding.ChessClockItemListBinding
 import dev.amal.chessclock.utils.ChessUtils
 import dev.amal.chessclock.utils.ChessUtils.Companion.BLITZ
 import dev.amal.chessclock.utils.ChessUtils.Companion.BULLET
@@ -30,7 +31,11 @@ class ClockListAdapter(
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder.from(parent, clockItemListener)
+        ViewHolder(
+            ChessClockItemListBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            ), clockItemListener
+        )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(data[position], currentClockId)
@@ -39,28 +44,19 @@ class ClockListAdapter(
     override fun getItemCount(): Int = data.size
 
     class ViewHolder(
-        itemView: View, private val clockItemListener: ClockItemListener
-    ) : RecyclerView.ViewHolder(itemView), View.OnCreateContextMenuListener {
+        binding: ChessClockItemListBinding, private val clockItemListener: ClockItemListener
+    ) : RecyclerView.ViewHolder(binding.root), View.OnCreateContextMenuListener {
 
-        private val cardView: MaterialCardView = itemView.findViewById(R.id.card_view)
-        private val clockThumbnail: ImageView = itemView.findViewById(R.id.clock_item_thumbnail)
-        private val gameType: TextView = itemView.findViewById(R.id.clock_item_game_type)
-        private val gameTimes: TextView = itemView.findViewById(R.id.clock_item_game_times)
+        private val cardView: MaterialCardView = binding.cardView
+        private val clockThumbnail: ImageView = binding.clockItemThumbnail
+        private val gameType: TextView = binding.clockItemGameType
+        private val gameTimes: TextView = binding.clockItemGameTimes
+
         private lateinit var chessClock: ChessClock
 
-        companion object {
-            fun from(parent: ViewGroup, clockItemListener: ClockItemListener): ViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.chess_clock_item_list, parent, false)
-                return ViewHolder(view, clockItemListener)
-            }
-        }
-
         init {
-            itemView.setOnClickListener {
-                clockItemListener.onClickItem(chessClock.id)
-            }
-            itemView.setOnCreateContextMenuListener(this)
+            binding.root.setOnClickListener { clockItemListener.onClickItem(chessClock.id) }
+            binding.root.setOnCreateContextMenuListener(this)
         }
 
         fun bind(clock: ChessClock, currentClockId: Long) {
