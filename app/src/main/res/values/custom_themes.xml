@@ -32,8 +32,8 @@
     </style>
 
     <style name="ThemeFourth">
-        <item name="textColorTop">@color/white</item>
-        <item name="textColorBottom">@color/white</item>
+        <item name="textColorTop">@color/theme_four_text_color</item>
+        <item name="textColorBottom">@color/theme_four_text_color</item>
         <item name="textColorTimeControl">@color/white</item>
         <item name="backgroundColorTop">@color/theme_four_main</item>
         <item name="backgroundColorBottom">@color/theme_four_secondary</item>
@@ -42,8 +42,8 @@
     </style>
 
     <style name="ThemeFifth">
-        <item name="textColorTop">@color/white</item>
-        <item name="textColorBottom">@color/white</item>
+        <item name="textColorTop">@color/theme_five_text_color</item>
+        <item name="textColorBottom">@color/theme_five_text_color</item>
         <item name="textColorTimeControl">@color/white</item>
         <item name="backgroundColorTop">@color/theme_five_main</item>
         <item name="backgroundColorBottom">@color/theme_five_secondary</item>

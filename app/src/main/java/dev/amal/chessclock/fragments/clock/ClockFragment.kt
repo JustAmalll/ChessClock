@@ -33,6 +33,7 @@ class ClockFragment : BaseFragment<FragmentClockBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         setStatusBarColor()
+        setButtonColor()
 
         clockSound = MediaPlayer.create(requireContext(), R.raw.chess_clock_sound)
         timeUpSound = MediaPlayer.create(context, R.raw.time_up_sound)
@@ -45,7 +46,7 @@ class ClockFragment : BaseFragment<FragmentClockBinding>(
         // Observers...
         viewModel.guidelinePercentage.observe(viewLifecycleOwner) {
             val changeBoundsTransition = ChangeBounds()
-            changeBoundsTransition.duration = 200
+            changeBoundsTransition.duration = 250
             TransitionManager.beginDelayedTransition(binding.root, changeBoundsTransition)
             binding.guideline.setGuidelinePercent(it)
         }
@@ -203,6 +204,43 @@ class ClockFragment : BaseFragment<FragmentClockBinding>(
                 4 -> statusBarColor = getContextCompactColor(R.color.theme_four_main)
                 5 -> statusBarColor = getContextCompactColor(R.color.theme_five_main)
                 6 -> statusBarColor = getContextCompactColor(R.color.theme_six_main)
+            }
+        }
+    }
+
+    private fun setButtonColor() {
+        binding.apply {
+            when (preferences.getInt(THEME_ID, 2)) {
+                1 -> {
+                    actionGoToSettings.setImageResource(R.drawable.ic_settings_btn_first_theme)
+                    actionPause.setImageResource(R.drawable.ic_pause_btn_first_theme)
+                    actionRestart.setImageResource(R.drawable.ic_restart_btn_first_theme)
+                }
+                2 -> {
+                    actionGoToSettings.setImageResource(R.drawable.ic_settings_btn_second_theme)
+                    actionPause.setImageResource(R.drawable.ic_pause_btn_second_theme)
+                    actionRestart.setImageResource(R.drawable.ic_restart_btn_second_theme)
+                }
+                3 -> {
+                    actionGoToSettings.setImageResource(R.drawable.ic_settings_btn_third_theme)
+                    actionPause.setImageResource(R.drawable.ic_pause_btn_third_theme)
+                    actionRestart.setImageResource(R.drawable.ic_restart_btn_third_theme)
+                }
+                4 -> {
+                    actionGoToSettings.setImageResource(R.drawable.ic_settings_btn_fourth_theme)
+                    actionPause.setImageResource(R.drawable.ic_pause_btn_fourth_theme)
+                    actionRestart.setImageResource(R.drawable.ic_restart_btn_fourth_theme)
+                }
+                5 -> {
+                    actionGoToSettings.setImageResource(R.drawable.ic_settings_btn_fifth_theme)
+                    actionPause.setImageResource(R.drawable.ic_pause_btn_fifth_theme)
+                    actionRestart.setImageResource(R.drawable.ic_restart_btn_fifth_theme)
+                }
+                6 -> {
+                    actionGoToSettings.setImageResource(R.drawable.ic_settings_btn_sixth_theme)
+                    actionPause.setImageResource(R.drawable.ic_pause_btn_sixth_theme)
+                    actionRestart.setImageResource(R.drawable.ic_restart_btn_sixth_theme)
+                }
             }
         }
     }

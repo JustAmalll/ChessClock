@@ -1,8 +1,5 @@
 package dev.amal.chessclock.fragments.settings.theme_customization
 
-import android.animation.ArgbEvaluator
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -23,6 +20,8 @@ class ThemeCustomizationFragment : BaseFragment<FragmentThemeCustomizationBindin
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
 
         when (preferences.getInt(THEME_ID, 2)) {
             1 -> {
@@ -166,6 +165,7 @@ class ThemeCustomizationFragment : BaseFragment<FragmentThemeCustomizationBindin
 
     private fun setFirstTheme() {
         binding.apply {
+            actionPausePreview.setImageResource(R.drawable.ic_preview_btn_first_theme)
             applyButton.setCardViewBgColor(R.color.theme_one_main)
             clockTopContainerPreview.setBgColor(R.color.theme_one_main)
             clockBottomContainerPreview.setBgColor(R.color.theme_one_secondary)
@@ -176,6 +176,7 @@ class ThemeCustomizationFragment : BaseFragment<FragmentThemeCustomizationBindin
 
     private fun setSecondTheme() {
         binding.apply {
+            actionPausePreview.setImageResource(R.drawable.ic_preview_btn_second_theme)
             applyButton.setCardViewBgColor(R.color.theme_two_main)
             clockTopContainerPreview.setBgColor(R.color.theme_two_main)
             clockBottomContainerPreview.setBackgroundColor(Color.WHITE)
@@ -186,6 +187,7 @@ class ThemeCustomizationFragment : BaseFragment<FragmentThemeCustomizationBindin
 
     private fun setThirdTheme() {
         binding.apply {
+            actionPausePreview.setImageResource(R.drawable.ic_preview_btn_third_theme)
             applyButton.setCardViewBgColor(R.color.theme_three_main)
             clockTopContainerPreview.setBgColor(R.color.theme_three_main)
             clockBottomContainerPreview.setBgColor(R.color.theme_three_secondary)
@@ -196,26 +198,29 @@ class ThemeCustomizationFragment : BaseFragment<FragmentThemeCustomizationBindin
 
     private fun setFourthTheme() {
         binding.apply {
+            actionPausePreview.setImageResource(R.drawable.ic_preview_btn_fourth_theme)
             applyButton.setCardViewBgColor(R.color.theme_four_main)
             clockTopContainerPreview.setBgColor(R.color.theme_four_main)
             clockBottomContainerPreview.setBgColor(R.color.theme_four_secondary)
-            clockTopTextViewPreview.setTextViewColor()
-            clockBottomTextViewPreview.setTextViewColor()
+            clockTopTextViewPreview.setTextViewColor(R.color.theme_four_text_color)
+            clockBottomTextViewPreview.setTextViewColor(R.color.theme_four_text_color)
         }
     }
 
     private fun setFifthTheme() {
         binding.apply {
+            actionPausePreview.setImageResource(R.drawable.ic_preview_btn_fifth_theme)
             applyButton.setCardViewBgColor(R.color.theme_five_main)
             clockTopContainerPreview.setBgColor(R.color.theme_five_main)
             clockBottomContainerPreview.setBgColor(R.color.theme_five_secondary)
-            clockTopTextViewPreview.setTextViewColor()
-            clockBottomTextViewPreview.setTextViewColor()
+            clockTopTextViewPreview.setTextViewColor(R.color.theme_five_text_color)
+            clockBottomTextViewPreview.setTextViewColor(R.color.theme_five_text_color)
         }
     }
 
     private fun setSixthTheme() {
         binding.apply {
+            actionPausePreview.setImageResource(R.drawable.ic_preview_btn_sixth_theme)
             applyButton.setCardViewBgColor(R.color.theme_six_main)
             clockTopContainerPreview.setBgColor(R.color.theme_six_main)
             clockBottomContainerPreview.setBgColor(R.color.theme_six_secondary)
