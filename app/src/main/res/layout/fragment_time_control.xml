@@ -137,26 +137,22 @@
 
         <View
             android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
+            style="@style/DefaultDividerStyle"
             android:layout_marginTop="16dp"
-            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/same_time_switch" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/same_time_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/DefaultSwitchStyle"
             android:layout_marginTop="12dp"
             android:checked="true"
             android:textColor="@color/black"
             android:text="@string/same_times_switch"
             app:layout_constraintEnd_toEndOf="@+id/player_two_time"
             app:layout_constraintTop_toBottomOf="@+id/player_two_time"
-            app:switchMinWidth="56dp"
             app:switchPadding="8dp"
-            app:thumbTint="?switchThumbTint"
-            app:trackTint="?switchTrackTint"
             tools:thumbTint="#3B3B3B"
             tools:trackTint="#9D9D9D" />
 

@@ -16,13 +16,45 @@
     </style>
 
     <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="android:textColor">#d81b60</item>
-        <item name="rippleColor">#ad1457</item>
+        <item name="android:textColor">@color/light_gray</item>
     </style>
 
     <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="android:textColor">#757575</item>
-        <item name="rippleColor">#a4a4a4</item>
+        <item name="android:textColor">@color/light_gray</item>
+    </style>
+
+    <style name="DefaultSettingsTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="DefaultSettingsConstraintLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">16dp</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">16dp</item>
+        <item name="android:paddingVertical" tools:targetApi="o">5dp</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="DefaultSwitchStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="switchMinWidth">56dp</item>
+        <item name="thumbTint">?switchThumbTint</item>
+        <item name="trackTint">?switchTrackTint</item>
+    </style>
+
+    <style name="DefaultDividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">16dp</item>
+        <item name="android:background">?android:attr/dividerVertical</item>
+        <item name="android:backgroundTint">@color/black</item>
     </style>
 
 </resources>

@@ -34,28 +34,17 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/sound_setting_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            style="@style/DefaultSettingsConstraintLayout"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="4dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="5dp">
+            android:layout_marginBottom="4dp">
 
             <TextView
                 android:id="@+id/sound_settings_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/DefaultSettingsTitle"
                 android:text="@string/sound_settings_title"
-                android:textColor="@color/black"
-                android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/sound_settings_summary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="spread" />
 
             <TextView
@@ -70,166 +59,107 @@
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/sound_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/DefaultSwitchStyle"
                 android:layout_marginBottom="4dp"
                 android:checked="true"
-                android:minWidth="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:switchMinWidth="56dp"
-                app:thumbTint="?switchThumbTint"
-                app:trackTint="?switchTrackTint"
                 tools:thumbTint="#3B3B3B"
                 tools:trackTint="#9D9D9D" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginHorizontal="16dp"
-            android:backgroundTint="@color/black"
-            android:background="?android:attr/dividerVertical" />
+        <View style="@style/DefaultDividerStyle" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/low_time_warning_setting_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="4dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:contentDescription="@string/low_time_warning_setting_description"
-            android:focusable="true"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="5dp">
+            style="@style/DefaultSettingsConstraintLayout"
+            android:contentDescription="@string/low_time_warning_setting_description">
 
             <TextView
                 android:id="@+id/low_time_warning_settings_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/DefaultSettingsTitle"
                 android:text="@string/low_time_warning_settings_title"
-                android:textColor="@color/black"
-                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/low_time_warning_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/DefaultSwitchStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:switchMinWidth="56dp"
-                app:thumbTint="?switchThumbTint"
-                app:trackTint="?switchTrackTint" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/vibrate_setting_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:contentDescription="@string/vibrate_setting_description"
-            android:focusable="true"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="5dp">
+            style="@style/DefaultSettingsConstraintLayout"
+            android:contentDescription="@string/vibrate_setting_description">
 
             <TextView
                 android:id="@+id/vibrate_settings_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/DefaultSettingsTitle"
                 android:text="@string/vibrate_settings_title"
-                android:textColor="@color/black"
-                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/vibrate_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/DefaultSwitchStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:switchMinWidth="56dp"
-                app:thumbTint="?switchThumbTint"
-                app:trackTint="?switchTrackTint" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/alert_time_setting_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="4dp"
-            android:clickable="true"
+            android:layout_marginVertical="4dp"
             android:contentDescription="@string/alert_time_description"
-            android:focusable="true"
+            android:orientation="vertical"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp">
 
             <TextView
                 android:id="@+id/alert_time_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/alert_time_title"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/alert_time_summary"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="spread" />
+                style="@style/DefaultSettingsTitle"
+                android:text="@string/alert_time_title" />
 
             <TextView
                 android:id="@+id/alert_time_summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/default_alert_time"
-                android:textColor="@color/help_text"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/alert_time_title"
-                app:layout_constraintTop_toBottomOf="@+id/alert_time_title" />
+                android:textColor="@color/help_text" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginHorizontal="16dp"
-            android:backgroundTint="@color/black"
-            android:background="?android:attr/dividerVertical" />
+        <View style="@style/DefaultDividerStyle" />
 
         <LinearLayout
             android:id="@+id/theme_settings_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="5dp"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:contentDescription="@string/themes_setting_description"
+            android:contentDescription="@string/theme_settings_description"
             android:focusable="true"
             android:orientation="vertical"
             android:paddingHorizontal="16dp"
             android:paddingVertical="5dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/theme_settings_title"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                style="@style/DefaultSettingsTitle"
+                android:text="@string/theme_settings_title" />
 
             <TextView
                 android:layout_width="wrap_content"

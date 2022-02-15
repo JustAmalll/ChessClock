@@ -60,7 +60,7 @@
     <string name="alert_time_title">Время предупреждения</string>
     <string name="alert_time_description">Выбрать время предупреждения</string>
     <string name="theme_settings_title">Темы</string>
-    <string name="themes_setting_description">Настройки темы</string>
+    <string name="theme_settings_description">Настройки темы</string>
     <string name="theme_settings_summary">Нажмите, чтобы настроить тему</string>
 
     <!--Theme Customization Settings-->

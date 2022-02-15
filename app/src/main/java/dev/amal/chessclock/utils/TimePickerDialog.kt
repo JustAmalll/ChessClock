@@ -1,5 +1,6 @@
 package dev.amal.chessclock.utils
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
 import android.view.View
@@ -65,6 +66,7 @@ class TimePickerDialog : DialogFragment() {
 
     private var title: String? = null
 
+    @SuppressLint("InflateParams")
     override fun onCreateDialog(
         savedInstanceState: Bundle?
     ): Dialog = activity?.let {
@@ -74,7 +76,7 @@ class TimePickerDialog : DialogFragment() {
 
         setupTimePickerLayout()
 
-        MaterialAlertDialogBuilder(it)
+        MaterialAlertDialogBuilder(it, R.style.AlertDialogTheme)
             .setView(timePickerLayout)
             .setTitle(title)
             .setPositiveButton(timeSetText) { _, _ ->

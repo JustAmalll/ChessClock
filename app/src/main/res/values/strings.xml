@@ -61,7 +61,7 @@
     <string name="alert_time_description">Select alert time</string>
     <string name="default_alert_time" translatable="false">00:00:00</string>
     <string name="theme_settings_title">Theme</string>
-    <string name="themes_setting_description">Themes setting</string>
+    <string name="theme_settings_description">Themes setting</string>
     <string name="theme_settings_summary">Click to customize the theme</string>
 
     <!--Theme Customization Settings-->
