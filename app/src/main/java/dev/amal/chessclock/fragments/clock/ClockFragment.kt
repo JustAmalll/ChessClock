@@ -109,15 +109,19 @@ class ClockFragment : BaseFragment<FragmentClockBinding>(
         }
 
         viewModel.timeUpPlayerOne.observe(viewLifecycleOwner) {
-            binding.clock1.root.isClickable = false
-            binding.clock2.root.isClickable = false
-            binding.clock1Container.setBgColor(R.color.design_default_color_error)
+            binding.apply {
+                clock1.root.isClickable = false
+                clock2.root.isClickable = false
+                clock1.textViewClock.gone()
+                clock1.imageViewLose.visible()
+            }
         }
 
         viewModel.timeUpPlayerTwo.observe(viewLifecycleOwner) {
             binding.clock1.root.isClickable = false
             binding.clock2.root.isClickable = false
-            binding.clock2Container.setBgColor(R.color.design_default_color_error)
+            binding.clock2.textViewClock.gone()
+            binding.clock2.imageViewLose.visible()
         }
 
         viewModel.playClockSound.observe(viewLifecycleOwner) {

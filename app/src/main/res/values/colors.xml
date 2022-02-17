@@ -14,7 +14,7 @@
     <color name="grey_900">#212121</color>
     <color name="grey_50">#fafafa</color>
 
-    <color name="design_default_color_error">#B00020</color>
+    <color name="error_color">#B00020</color>
 
     <color name="theme_one_main">#f5907c</color>
     <color name="theme_one_track_tint">#F8C2BF</color>
